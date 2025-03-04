@@ -12,7 +12,7 @@
 
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11.2%;
-    
+
     --primary: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
     --primary-foreground: 222 47% 11.2%;
 
@@ -28,7 +28,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 80% 76%; /* #FDE68A - Jaune doux */
+    --border: 0 0% 90%; /* Changed from yellow to a subtle gray */
     --input: 214.3 31.8% 91.4%;
     --ring: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
 
@@ -60,7 +60,7 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 80% 76%; /* #FDE68A - Jaune doux */
+    --border: 0 0% 20%; /* Changed from yellow to a subtle dark gray for dark mode */
     --input: 217.2 32.6% 17.5%;
     --ring: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
   }
@@ -84,7 +84,7 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-yellow-soft/30 dark:border-yellow-soft/20 shadow-glass;
+    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-glass;
   }
   
   .glass-card {

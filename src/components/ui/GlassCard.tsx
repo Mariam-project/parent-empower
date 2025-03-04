@@ -24,7 +24,7 @@ const GlassCard = ({
         variant === "primary" && "border-blue-pastel/30 bg-blue-pastel/10",
         variant === "secondary" && "border-blue-pastel-light/30 bg-blue-pastel-light/10",
         variant === "accent" && "border-purple-light/30 bg-purple-light/10",
-        variant === "neutral" && "border-yellow-soft/30 bg-white/70",
+        variant === "neutral" && "border-white/10 bg-white/70",
         className
       )}
       {...props}
