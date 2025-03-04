@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 0 0% 96%; /* #F5F5F5 - Gris clair */
     --foreground: 222 47% 11.2%;
 
     --card: 0 0% 100%;
@@ -14,24 +14,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11.2%;
     
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
+    --primary-foreground: 222 47% 11.2%;
 
-    --secondary: 210 20% 96%;
+    --secondary: 92 70% 72%; /* #B8E986 - Vert menthe */
     --secondary-foreground: 222 47% 11.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 0 0% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 221 83% 53%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 270 79% 79%; /* #C3A2F1 - Violet léger */
+    --accent-foreground: 222 47% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 45 80% 76%; /* #FDE68A - Jaune doux */
     --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --ring: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
 
     --radius: 0.75rem;
   }
@@ -46,24 +46,24 @@
     --popover: 222 47% 11.2%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
+    --primary-foreground: 222 47% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 92 70% 72%; /* #B8E986 - Vert menthe */
+    --secondary-foreground: 222 47% 11.2%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 91.2% 59.8%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 270 79% 79%; /* #C3A2F1 - Violet léger */
+    --accent-foreground: 222 47% 11.2%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
+    --border: 45 80% 76%; /* #FDE68A - Jaune doux */
     --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --ring: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
   }
 }
 
@@ -85,7 +85,7 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-white/20 dark:border-gray-800/30 shadow-glass;
+    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-yellow-soft/30 dark:border-yellow-soft/20 shadow-glass;
   }
   
   .glass-card {
@@ -97,23 +97,23 @@
   }
   
   .nav-link {
-    @apply px-4 py-2 text-gray-700 dark:text-gray-300 font-medium rounded-md transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800;
+    @apply px-4 py-2 text-gray-700 dark:text-gray-300 font-medium rounded-md transition-colors duration-200 hover:bg-gray-light dark:hover:bg-gray-800;
   }
   
   .active-nav-link {
-    @apply bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground;
+    @apply bg-blue-pastel/20 text-blue-pastel dark:bg-blue-pastel/20 dark:text-blue-pastel;
   }
   
   .button-primary {
-    @apply glass-effect bg-primary text-primary-foreground px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
+    @apply glass-effect bg-blue-pastel text-gray-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
   }
   
   .button-secondary {
-    @apply glass-effect bg-secondary text-secondary-foreground px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
+    @apply glass-effect bg-green-mint text-gray-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
   }
   
   .button-ghost {
-    @apply px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 active:translate-y-0;
+    @apply px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-gray-light dark:hover:bg-gray-800 hover:-translate-y-0.5 active:translate-y-0;
   }
 }
 
@@ -128,17 +128,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(167, 199, 231, 0.5); /* Bleu pastel transparent */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(167, 199, 231, 0.8); /* Bleu pastel plus opaque au hover */
 }
 
 /* Focus styles */
 *:focus-visible {
-  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  @apply outline-none ring-2 ring-blue-pastel/50 ring-offset-2 ring-offset-background;
 }
 
 /* Import fonts */

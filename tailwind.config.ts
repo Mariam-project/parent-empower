@@ -62,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Nouvelle palette de couleurs pastel
+				"blue-pastel": "#A7C7E7",
+				"green-mint": "#B8E986",
+				"yellow-soft": "#FDE68A",
+				"gray-light": "#F5F5F5",
+				"purple-light": "#C3A2F1",
 			},
 			fontFamily: {
 				sans: ['Inter var', 'sans-serif'],
