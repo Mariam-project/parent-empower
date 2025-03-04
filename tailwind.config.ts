@@ -65,6 +65,7 @@ export default {
 				},
 				// Nouvelle palette de couleurs pastel
 				"blue-pastel": "#A7C7E7",
+				"blue-pastel-light": "#D3E4FD", // Nouvelle sous-teinte de bleu pastel
 				"green-mint": "#B8E986",
 				"yellow-soft": "#FDE68A",
 				"gray-light": "#F5F5F5",
@@ -137,3 +138,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

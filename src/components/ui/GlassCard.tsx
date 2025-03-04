@@ -22,7 +22,7 @@ const GlassCard = ({
         "glass-card p-6",
         hoverEffect && "hover-scale",
         variant === "primary" && "border-blue-pastel/30 bg-blue-pastel/10",
-        variant === "secondary" && "border-green-mint/30 bg-green-mint/10",
+        variant === "secondary" && "border-blue-pastel-light/30 bg-blue-pastel-light/10",
         variant === "accent" && "border-purple-light/30 bg-purple-light/10",
         variant === "neutral" && "border-yellow-soft/30 bg-white/70",
         className

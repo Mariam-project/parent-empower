@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +16,7 @@
     --primary: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
     --primary-foreground: 222 47% 11.2%;
 
-    --secondary: 92 70% 72%; /* #B8E986 - Vert menthe */
+    --secondary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair */
     --secondary-foreground: 222 47% 11.2%;
 
     --muted: 0 0% 96%;
@@ -49,7 +48,7 @@
     --primary: 219 63% 78%; /* #A7C7E7 - Bleu pastel */
     --primary-foreground: 222 47% 11.2%;
 
-    --secondary: 92 70% 72%; /* #B8E986 - Vert menthe */
+    --secondary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair */
     --secondary-foreground: 222 47% 11.2%;
 
     --muted: 217.2 32.6% 17.5%;
