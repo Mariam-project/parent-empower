@@ -1,4 +1,3 @@
-
 import React from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
@@ -105,10 +104,12 @@ const Dashboard = () => {
           <GlassCard className="animate-fade-up" style={{ animationDelay: "100ms" }}>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-medium">Échéances</h2>
-              <Button variant="ghost" size="sm" className="flex items-center gap-1">
-                <CalendarDays size={16} />
-                <span>Calendrier</span>
-              </Button>
+              <Link to="/calendar">
+                <Button variant="ghost" size="sm" className="flex items-center gap-1">
+                  <CalendarDays size={16} />
+                  <span>Calendrier</span>
+                </Button>
+              </Link>
             </div>
             <div className="space-y-4">
               {upcomingDeadlines.map((item) => (

@@ -12,6 +12,7 @@ import LearningJournal from "./pages/LearningJournal";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import StudyCalendar from "./components/dashboard/StudyCalendar";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/courses" element={<Courses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
             <Route path="/journal" element={<LearningJournal />} />
+            <Route path="/calendar" element={<StudyCalendar />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

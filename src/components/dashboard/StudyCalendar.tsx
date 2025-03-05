@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import GlassCard from "@/components/ui/GlassCard";
@@ -134,7 +135,7 @@ const StudyCalendar = () => {
   };
   
   // Function to get icon based on event type
-  const getEventTypeIcon = (type: string) => {
+  const getEventTypeIcon = (type: string, event: CalendarEvent) => {
     switch (type) {
       case "assignment":
         return <FileText size={16} />;
@@ -143,192 +144,196 @@ const StudyCalendar = () => {
       case "study":
         return <Brain size={16} />;
       case "break":
-        return type === "break" && event.title === "Marche détente" ? <Footprints size={16} /> : <Smile size={16} />;
+        return event.title === "Marche détente" ? <Footprints size={16} /> : <Smile size={16} />;
       default:
         return <Clock size={16} />;
     }
   };
 
   return (
-    <GlassCard className="p-0 overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-12">
-        <div className="md:col-span-5 bg-background/50 p-4 border-r border-border">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            className="w-full"
-          />
-          <div className="mt-4 space-y-2">
-            <div className="text-sm font-medium">Légende :</div>
-            <div className="flex flex-wrap gap-2">
-              <div className="flex items-center gap-1 text-xs">
-                <div className="w-3 h-3 rounded-full bg-primary/80"></div>
-                <span>Devoirs</span>
-              </div>
-              <div className="flex items-center gap-1 text-xs">
-                <div className="w-3 h-3 rounded-full bg-blue-pastel-light/80"></div>
-                <span>Cours</span>
-              </div>
-              <div className="flex items-center gap-1 text-xs">
-                <div className="w-3 h-3 rounded-full bg-purple-light/80"></div>
-                <span>Révisions</span>
-              </div>
-              <div className="flex items-center gap-1 text-xs">
-                <div className="w-3 h-3 rounded-full bg-green-mint/80"></div>
-                <span>Pauses</span>
+    <div className="min-h-screen bg-gradient-to-br from-secondary/50 to-background">
+      <GlassCard className="p-0 overflow-hidden min-h-screen">
+        <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen">
+          <div className="md:col-span-5 lg:col-span-4 bg-background/50 p-6 border-r border-border">
+            <h2 className="text-2xl font-medium mb-6">Calendrier d'études</h2>
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={setDate}
+              className="w-full"
+            />
+            <div className="mt-6 space-y-3">
+              <div className="text-sm font-medium">Légende :</div>
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center gap-1.5 text-sm">
+                  <div className="w-4 h-4 rounded-full bg-primary/80"></div>
+                  <span>Devoirs</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-sm">
+                  <div className="w-4 h-4 rounded-full bg-blue-pastel-light/80"></div>
+                  <span>Cours</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-sm">
+                  <div className="w-4 h-4 rounded-full bg-purple-light/80"></div>
+                  <span>Révisions</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-sm">
+                  <div className="w-4 h-4 rounded-full bg-green-mint/80"></div>
+                  <span>Pauses</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="md:col-span-7 p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-medium">
-              {date ? date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : "Sélectionnez une date"}
-            </h3>
-            <Button variant="outline" size="sm" onClick={addStudyBreak} className="flex items-center gap-1">
-              <Plus size={14} />
-              <span>Ajouter une pause</span>
-            </Button>
           </div>
           
-          {selectedDateEvents.length === 0 ? (
-            <div className="text-center py-10 px-4">
-              <div className="mx-auto w-12 h-12 rounded-full bg-muted/30 flex items-center justify-center text-muted-foreground mb-3">
-                <CalendarDays size={20} />
-              </div>
-              <p className="text-muted-foreground">Aucun événement pour cette date</p>
-              <Button variant="outline" size="sm" className="mt-3">
-                <Plus size={14} className="mr-1" />
-                Ajouter un événement
+          <div className="md:col-span-7 lg:col-span-8 p-6 md:p-8 overflow-y-auto max-h-screen">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-medium">
+                {date ? date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : "Sélectionnez une date"}
+              </h3>
+              <Button variant="outline" size="sm" onClick={addStudyBreak} className="flex items-center gap-1">
+                <Plus size={14} />
+                <span>Ajouter une pause</span>
               </Button>
             </div>
-          ) : (
-            <div className="space-y-6">
-              {/* Assignments */}
-              {groupedEvents.assignment.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <FileText size={16} />
-                    <span>Devoirs</span>
-                  </h4>
-                  
-                  <div className="space-y-2">
-                    {groupedEvents.assignment.map(event => (
-                      <div key={event.id} className="p-3 bg-primary/5 rounded-lg border border-primary/10">
-                        <div className="flex justify-between">
-                          <h5 className="font-medium">{event.title}</h5>
-                          <span className="text-xs bg-primary/10 px-2 py-0.5 rounded text-primary">
-                            {event.time}
-                          </span>
-                        </div>
-                        {event.description && (
-                          <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+            
+            {selectedDateEvents.length === 0 ? (
+              <div className="text-center py-16 px-4">
+                <div className="mx-auto w-16 h-16 rounded-full bg-muted/30 flex items-center justify-center text-muted-foreground mb-4">
+                  <CalendarDays size={24} />
                 </div>
-              )}
-              
-              {/* Lectures */}
-              {groupedEvents.lecture.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <CalendarDays size={16} />
-                    <span>Cours</span>
-                  </h4>
-                  
-                  <div className="space-y-2">
-                    {groupedEvents.lecture.map(event => (
-                      <div key={event.id} className="p-3 bg-blue-pastel-light/5 rounded-lg border border-blue-pastel-light/10">
-                        <div className="flex justify-between">
-                          <h5 className="font-medium">{event.title}</h5>
-                          <span className="text-xs bg-blue-pastel-light/10 px-2 py-0.5 rounded text-blue-pastel">
-                            {event.time}
-                          </span>
-                        </div>
-                        {event.description && (
-                          <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Study sessions */}
-              {groupedEvents.study.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <Brain size={16} />
-                    <span>Révisions</span>
-                  </h4>
-                  
-                  <div className="space-y-2">
-                    {groupedEvents.study.map(event => (
-                      <div key={event.id} className="p-3 bg-purple-light/5 rounded-lg border border-purple-light/10">
-                        <div className="flex justify-between">
-                          <h5 className="font-medium">{event.title}</h5>
-                          <span className="text-xs bg-purple-light/10 px-2 py-0.5 rounded text-purple-light">
-                            {event.time}
-                          </span>
-                        </div>
-                        {event.description && (
-                          <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Breaks */}
-              {groupedEvents.break.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <Palmtree size={14} />
-                    <span>Pauses bien-être</span>
-                  </h4>
-                  
-                  <div className="space-y-2">
-                    {groupedEvents.break.map(event => (
-                      <div key={event.id} className="p-3 bg-green-mint/5 rounded-lg border border-green-mint/10">
-                        <div className="flex justify-between">
-                          <h5 className="font-medium">{event.title}</h5>
-                          <span className="text-xs bg-green-mint/10 px-2 py-0.5 rounded text-green-600">
-                            {event.time}
-                          </span>
-                        </div>
-                        {event.description && (
-                          <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Add AI suggestion */}
-              <div className="p-4 border border-dashed border-primary/30 rounded-lg">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles size={16} className="text-primary" />
-                  <h4 className="text-sm font-medium">Suggestion IA</h4>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  D'après votre emploi du temps, il serait idéal de prévoir une session de révision 
-                  avant votre échéance de Mathématiques. Voulez-vous l'ajouter ?
-                </p>
-                <Button size="sm" variant="outline" className="mt-2">
-                  Ajouter à mon planning
+                <p className="text-xl text-muted-foreground mb-2">Aucun événement pour cette date</p>
+                <p className="text-muted-foreground mb-6">Ajoutez des cours, des révisions ou des pauses pour organiser votre journée</p>
+                <Button variant="outline" size="sm" className="mt-3">
+                  <Plus size={14} className="mr-1" />
+                  Ajouter un événement
                 </Button>
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="space-y-8">
+                {/* Assignments */}
+                {groupedEvents.assignment.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-medium mb-3 flex items-center gap-1.5">
+                      <FileText size={16} />
+                      <span>Devoirs</span>
+                    </h4>
+                    
+                    <div className="space-y-3">
+                      {groupedEvents.assignment.map(event => (
+                        <div key={event.id} className="p-4 bg-primary/5 rounded-lg border border-primary/10 hover:bg-primary/10 transition-colors">
+                          <div className="flex justify-between">
+                            <h5 className="font-medium">{event.title}</h5>
+                            <span className="text-xs bg-primary/10 px-2 py-0.5 rounded text-primary">
+                              {event.time}
+                            </span>
+                          </div>
+                          {event.description && (
+                            <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Lectures */}
+                {groupedEvents.lecture.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-medium mb-3 flex items-center gap-1.5">
+                      <CalendarDays size={16} />
+                      <span>Cours</span>
+                    </h4>
+                    
+                    <div className="space-y-3">
+                      {groupedEvents.lecture.map(event => (
+                        <div key={event.id} className="p-4 bg-blue-pastel-light/5 rounded-lg border border-blue-pastel-light/10 hover:bg-blue-pastel-light/10 transition-colors">
+                          <div className="flex justify-between">
+                            <h5 className="font-medium">{event.title}</h5>
+                            <span className="text-xs bg-blue-pastel-light/10 px-2 py-0.5 rounded text-blue-pastel">
+                              {event.time}
+                            </span>
+                          </div>
+                          {event.description && (
+                            <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Study sessions */}
+                {groupedEvents.study.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-medium mb-3 flex items-center gap-1.5">
+                      <Brain size={16} />
+                      <span>Révisions</span>
+                    </h4>
+                    
+                    <div className="space-y-3">
+                      {groupedEvents.study.map(event => (
+                        <div key={event.id} className="p-4 bg-purple-light/5 rounded-lg border border-purple-light/10 hover:bg-purple-light/10 transition-colors">
+                          <div className="flex justify-between">
+                            <h5 className="font-medium">{event.title}</h5>
+                            <span className="text-xs bg-purple-light/10 px-2 py-0.5 rounded text-purple-light">
+                              {event.time}
+                            </span>
+                          </div>
+                          {event.description && (
+                            <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Breaks */}
+                {groupedEvents.break.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-medium mb-3 flex items-center gap-1.5">
+                      <Palmtree size={16} />
+                      <span>Pauses bien-être</span>
+                    </h4>
+                    
+                    <div className="space-y-3">
+                      {groupedEvents.break.map(event => (
+                        <div key={event.id} className="p-4 bg-green-mint/5 rounded-lg border border-green-mint/10 hover:bg-green-mint/10 transition-colors">
+                          <div className="flex justify-between">
+                            <h5 className="font-medium">{event.title}</h5>
+                            <span className="text-xs bg-green-mint/10 px-2 py-0.5 rounded text-green-600">
+                              {event.time}
+                            </span>
+                          </div>
+                          {event.description && (
+                            <p className="text-sm text-muted-foreground mt-1">{event.description}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Add AI suggestion */}
+                <div className="p-5 border border-dashed border-primary/30 rounded-lg mt-8 bg-primary/5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Sparkles size={18} className="text-primary" />
+                    <h4 className="font-medium">Suggestion IA</h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    D'après votre emploi du temps, il serait idéal de prévoir une session de révision 
+                    avant votre échéance de Mathématiques. Voulez-vous l'ajouter ?
+                  </p>
+                  <Button size="sm" variant="outline" className="w-full">
+                    Ajouter à mon planning
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </GlassCard>
+      </GlassCard>
+    </div>
   );
 };
 
