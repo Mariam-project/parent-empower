@@ -18,7 +18,8 @@ import {
   Clock,
   Save,
   MessageSquare,
-  UserCircle
+  UserCircle,
+  BookOpen as BookOpenIcon
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -400,7 +401,7 @@ const LearningJournal = () => {
                 <div className="p-4 bg-green-mint/10 border border-green-mint/20 rounded-lg">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-10 h-10 rounded-full bg-green-mint/20 flex items-center justify-center text-green-mint">
-                      <BookOpen size={20} />
+                      <BookOpenIcon size={20} />
                     </div>
                     <h3 className="font-medium">Cours terminés</h3>
                   </div>

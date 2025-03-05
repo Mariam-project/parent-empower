@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   BookOpen, 
-  PlayCircle, 
+  Play, 
   FileText, 
   PenSquare,
   CheckCircle,
@@ -102,7 +102,7 @@ const CourseDetail = () => {
               
               <div className="flex gap-2">
                 <Button className="flex-1">
-                  <PlayCircle size={16} className="mr-2" />
+                  <Play size={16} className="mr-2" />
                   Continuer
                 </Button>
                 <Button variant="outline" size="icon" className="h-10 w-10">
