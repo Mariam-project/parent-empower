@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,12 +23,12 @@ import {
   Star,
   Clock
 } from "lucide-react";
+import { coursesData } from "@/data/coursesData";
 
 const Courses = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
   
-  // Mock data for courses
   const subjects = [
     { id: "math", name: "Mathématiques", icon: <Calculator size={20} /> },
     { id: "physics", name: "Physique-Chimie", icon: <Atom size={20} /> },
@@ -37,77 +38,8 @@ const Courses = () => {
     { id: "philosophy", name: "Philosophie", icon: <History size={20} /> },
   ];
   
-  const courses = [
-    {
-      id: 1,
-      title: "Fonctions dérivées et applications",
-      subject: "Mathématiques",
-      progress: 80,
-      duration: "3h 20min",
-      lessons: 12,
-      rating: 4.8,
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "math"
-    },
-    {
-      id: 2,
-      title: "La poésie romantique au XIXe siècle",
-      subject: "Français",
-      progress: 45,
-      duration: "2h 45min",
-      lessons: 8,
-      rating: 4.6,
-      image: "https://images.unsplash.com/photo-1471970394675-613138e45da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "french"
-    },
-    {
-      id: 3,
-      title: "Les forces et le mouvement",
-      subject: "Physique-Chimie",
-      progress: 60,
-      duration: "4h 10min",
-      lessons: 14,
-      rating: 4.9,
-      image: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "physics"
-    },
-    {
-      id: 4,
-      title: "La Seconde Guerre mondiale",
-      subject: "Histoire-Géo",
-      progress: 25,
-      duration: "3h 50min",
-      lessons: 10,
-      rating: 4.7,
-      image: "https://images.unsplash.com/photo-1535448033526-c0e85c9e6968?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "history"
-    },
-    {
-      id: 5,
-      title: "Advanced English Conversation",
-      subject: "Langues",
-      progress: 30,
-      duration: "5h 15min",
-      lessons: 18,
-      rating: 4.5,
-      image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "languages"
-    },
-    {
-      id: 6,
-      title: "Les courants philosophiques",
-      subject: "Philosophie",
-      progress: 15,
-      duration: "4h 30min",
-      lessons: 12,
-      rating: 4.4,
-      image: "https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      tag: "philosophy"
-    },
-  ];
-  
   // Filter courses based on search query and active filter
-  const filteredCourses = courses.filter(course => {
+  const filteredCourses = coursesData.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          course.subject.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = activeFilter === "all" || course.tag === activeFilter;
@@ -175,65 +107,66 @@ const Courses = () => {
         {/* Courses grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {filteredCourses.map((course, index) => (
-            <GlassCard 
-              key={course.id}
-              className="overflow-hidden flex flex-col animate-fade-up"
-              style={{ animationDelay: `${200 + index * 100}ms` }}
-            >
-              <div className="relative h-48 w-full overflow-hidden rounded-t-lg -mx-6 -mt-6">
-                <img
-                  src={course.image}
-                  alt={course.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="text-xs font-medium px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white">
-                    {course.subject}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex-1 pt-4">
-                <h3 className="font-medium text-lg mb-2">{course.title}</h3>
-                
-                <div className="flex items-center text-sm text-muted-foreground mb-3 space-x-4">
-                  <div className="flex items-center">
-                    <Clock size={14} className="mr-1" />
-                    <span>{course.duration}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <BookOpen size={14} className="mr-1" />
-                    <span>{course.lessons} leçons</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Star size={14} className="mr-1 text-yellow-500" />
-                    <span>{course.rating}</span>
+            <Link to={`/course/${course.id}`} key={course.id} className="block hover:no-underline">
+              <GlassCard 
+                className="overflow-hidden flex flex-col animate-fade-up"
+                style={{ animationDelay: `${200 + index * 100}ms` }}
+              >
+                <div className="relative h-48 w-full overflow-hidden rounded-t-lg -mx-6 -mt-6">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white">
+                      {course.subject}
+                    </span>
                   </div>
                 </div>
                 
-                <div className="mb-4">
-                  <div className="flex justify-between mb-1 text-xs">
-                    <span>Progression</span>
-                    <span>{course.progress}%</span>
+                <div className="flex-1 pt-4">
+                  <h3 className="font-medium text-lg mb-2">{course.title}</h3>
+                  
+                  <div className="flex items-center text-sm text-muted-foreground mb-3 space-x-4">
+                    <div className="flex items-center">
+                      <Clock size={14} className="mr-1" />
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <BookOpen size={14} className="mr-1" />
+                      <span>{course.lessons} leçons</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Star size={14} className="mr-1 text-yellow-500" />
+                      <span>{course.rating}</span>
+                    </div>
                   </div>
-                  <Progress value={course.progress} className="h-2" />
+                  
+                  <div className="mb-4">
+                    <div className="flex justify-between mb-1 text-xs">
+                      <span>Progression</span>
+                      <span>{course.progress}%</span>
+                    </div>
+                    <Progress value={course.progress} className="h-2" />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex gap-2 mt-4">
-                <Button variant="default" className="flex-1">
-                  <PlayCircle size={16} className="mr-2" />
-                  Continuer
-                </Button>
-                <Button variant="outline" size="icon" className="h-10 w-10">
-                  <FileText size={16} />
-                </Button>
-                <Button variant="outline" size="icon" className="h-10 w-10">
-                  <PenSquare size={16} />
-                </Button>
-              </div>
-            </GlassCard>
+                
+                <div className="flex gap-2 mt-4">
+                  <Button variant="default" className="flex-1">
+                    <PlayCircle size={16} className="mr-2" />
+                    Continuer
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-10 w-10">
+                    <FileText size={16} />
+                  </Button>
+                  <Button variant="outline" size="icon" className="h-10 w-10">
+                    <PenSquare size={16} />
+                  </Button>
+                </div>
+              </GlassCard>
+            </Link>
           ))}
         </div>
         
