@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
@@ -17,8 +18,7 @@ import {
   Clock,
   Save,
   MessageSquare,
-  UserCircle,
-  BookOpen
+  UserCircle
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
