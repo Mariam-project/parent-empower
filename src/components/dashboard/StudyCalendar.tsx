@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import GlassCard from "@/components/ui/GlassCard";
@@ -8,7 +7,7 @@ import {
   FileText,
   Brain,
   Plus,
-  Walk,
+  Footprints,
   Smile,
   Palmtree,
   Sparkles
@@ -144,7 +143,7 @@ const StudyCalendar = () => {
       case "study":
         return <Brain size={16} />;
       case "break":
-        type === "Marche détente" ? <Walk size={16} /> : <Smile size={16} />;
+        return type === "break" && event.title === "Marche détente" ? <Footprints size={16} /> : <Smile size={16} />;
       default:
         return <Clock size={16} />;
     }
@@ -211,7 +210,7 @@ const StudyCalendar = () => {
               {groupedEvents.assignment.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <FileText size={14} />
+                    <FileText size={16} />
                     <span>Devoirs</span>
                   </h4>
                   
@@ -237,7 +236,7 @@ const StudyCalendar = () => {
               {groupedEvents.lecture.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <CalendarDays size={14} />
+                    <CalendarDays size={16} />
                     <span>Cours</span>
                   </h4>
                   
@@ -263,7 +262,7 @@ const StudyCalendar = () => {
               {groupedEvents.study.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium mb-2 flex items-center gap-1">
-                    <Brain size={14} />
+                    <Brain size={16} />
                     <span>Révisions</span>
                   </h4>
                   
