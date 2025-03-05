@@ -7,7 +7,10 @@ import {
   Video, 
   Link as LinkIcon, 
   BookOpen,
-  FilePlus2
+  FilePlus2,
+  Play,
+  ExternalLink as ExternalLinkIcon,
+  Wand2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -111,7 +114,7 @@ const CourseMaterials: React.FC<CourseMaterialsProps> = ({ courseId }) => {
                 variant="ghost" 
                 onClick={() => openVideo(video.id, video.title)}
               >
-                <PlayCircle size={16} />
+                <Play size={16} />
               </Button>
             </div>
           ))}
@@ -141,7 +144,7 @@ const CourseMaterials: React.FC<CourseMaterialsProps> = ({ courseId }) => {
               </div>
               <a href={link.url} target="_blank" rel="noopener noreferrer">
                 <Button size="sm" variant="ghost">
-                  <ExternalLink size={16} />
+                  <ExternalLinkIcon size={16} />
                 </Button>
               </a>
             </div>
@@ -168,7 +171,7 @@ const CourseMaterials: React.FC<CourseMaterialsProps> = ({ courseId }) => {
             Générer une fiche
           </Button>
           <Button variant="outline">
-            <Magic size={16} className="mr-2" />
+            <Wand2 size={16} className="mr-2" />
             Résumer le cours
           </Button>
         </div>
