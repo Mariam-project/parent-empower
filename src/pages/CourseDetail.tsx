@@ -14,17 +14,27 @@ import {
   ArrowLeft,
   Clock,
   Star,
-  Award
+  Award,
+  Brain,
+  Sparkles
 } from "lucide-react";
 import { coursesData } from "@/data/coursesData";
 import ExercisesList from "@/components/courses/ExercisesList";
-import CourseMaterials from "@/components/courses/CourseMaterials";
+import { useToast } from "@/hooks/use-toast";
 
 const CourseDetail = () => {
   const { courseId } = useParams();
   const [activeTab, setActiveTab] = useState("content");
+  const { toast } = useToast();
   
   const course = coursesData.find(c => c.id.toString() === courseId);
+
+  const generateStudyMaterial = (type: string) => {
+    toast({
+      title: "Génération en cours",
+      description: `Votre ${type} personnalisée est en cours de création...`,
+    });
+  };
   
   if (!course) {
     return (
@@ -33,7 +43,7 @@ const CourseDetail = () => {
           <h2 className="text-xl font-medium mb-4">Cours non trouvé</h2>
           <p className="mb-4">Le cours que vous cherchez n'existe pas ou a été déplacé.</p>
           <Link to="/courses">
-            <Button>
+            <Button className="shadow-md hover:shadow-lg">
               <ArrowLeft size={16} className="mr-2" />
               Retour aux cours
             </Button>
@@ -101,14 +111,14 @@ const CourseDetail = () => {
               </p>
               
               <div className="flex gap-2">
-                <Button className="flex-1">
+                <Button className="flex-1 shadow-md hover:shadow-lg">
                   <Play size={16} className="mr-2" />
                   Continuer
                 </Button>
-                <Button variant="outline" size="icon" className="h-10 w-10">
+                <Button variant="outline" size="icon" className="h-10 w-10 shadow-sm hover:shadow-md">
                   <FileText size={16} />
                 </Button>
-                <Button variant="outline" size="icon" className="h-10 w-10">
+                <Button variant="outline" size="icon" className="h-10 w-10 shadow-sm hover:shadow-md">
                   <PenSquare size={16} />
                 </Button>
               </div>
@@ -118,7 +128,7 @@ const CourseDetail = () => {
           <GlassCard>
             <h2 className="text-xl font-medium mb-4">Accomplissements</h2>
             <div className="space-y-4">
-              <div className="bg-background/80 rounded-lg p-4">
+              <div className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                     <Award size={20} />
@@ -131,7 +141,7 @@ const CourseDetail = () => {
                 </div>
               </div>
               
-              <div className="bg-background/80 rounded-lg p-4">
+              <div className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                     <CheckCircle size={20} />
@@ -145,7 +155,7 @@ const CourseDetail = () => {
                 </div>
               </div>
               
-              <div className="bg-background/80 rounded-lg p-4">
+              <div className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                     <Star size={20} />
@@ -154,6 +164,20 @@ const CourseDetail = () => {
                     <h3 className="font-medium">Points accumulés</h3>
                     <p className="text-sm text-muted-foreground">
                       {Math.floor(course.progress * 10)} points
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all cursor-pointer">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                    <Award size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Tous les badges</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Voir tous les badges disponibles et comment les obtenir
                     </p>
                   </div>
                 </div>
@@ -167,7 +191,6 @@ const CourseDetail = () => {
           <TabsList className="mb-6">
             <TabsTrigger value="content">Contenu du cours</TabsTrigger>
             <TabsTrigger value="exercises">Exercices</TabsTrigger>
-            <TabsTrigger value="materials">Ressources</TabsTrigger>
           </TabsList>
           
           <TabsContent value="content" className="space-y-6">
@@ -175,7 +198,7 @@ const CourseDetail = () => {
               <h2 className="text-xl font-medium mb-4">Modules du cours</h2>
               <div className="space-y-4">
                 {[...Array(course.lessons)].map((_, i) => (
-                  <div key={i} className="bg-background/80 rounded-lg p-4">
+                  <div key={i} className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
@@ -188,7 +211,7 @@ const CourseDetail = () => {
                           </p>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="shadow-sm hover:shadow-md">
                         {i < course.progress / (100 / course.lessons) ? "Revoir" : "Commencer"}
                       </Button>
                     </div>
@@ -196,14 +219,81 @@ const CourseDetail = () => {
                 ))}
               </div>
             </GlassCard>
+            
+            {/* AI Study Materials - Moved from Resources tab */}
+            <GlassCard className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200/50">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Brain size={24} className="text-blue-500" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold mb-1">Assistant IA de révision</h2>
+                  <p className="text-sm text-muted-foreground">
+                    Créez des fiches de révision personnalisées et optimisez votre apprentissage
+                  </p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Button 
+                  className="w-full bg-blue-500 hover:bg-blue-600 shadow-md hover:shadow-lg transition-all"
+                  onClick={() => generateStudyMaterial('fiche de révision')}
+                >
+                  <FileText size={16} className="mr-2" />
+                  Créer une fiche de révision
+                </Button>
+                
+                <Button 
+                  variant="outline"
+                  className="w-full border-blue-200 hover:bg-blue-50 shadow-sm hover:shadow-md transition-all"
+                  onClick={() => generateStudyMaterial('synthèse')}
+                >
+                  <Brain size={16} className="mr-2" />
+                  Générer une synthèse
+                </Button>
+              </div>
+            </GlassCard>
+            
+            {/* AI Features Card - Moved from Resources tab */}
+            <GlassCard className="bg-gradient-to-br from-purple-50 to-rose-50 border-purple-200/50">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
+                  <Sparkles size={24} className="text-purple-500" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold mb-1">Fonctionnalités intelligentes</h2>
+                  <p className="text-sm text-muted-foreground">
+                    Exploitez la puissance de l'IA pour améliorer votre apprentissage
+                  </p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 bg-white/60 rounded-xl border border-purple-100 shadow-sm hover:shadow-md transition-all cursor-pointer">
+                  <h3 className="font-medium mb-2 flex items-center gap-2">
+                    <Play size={16} className="text-purple-500" />
+                    Quiz adaptatif
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Questions générées en fonction de votre niveau
+                  </p>
+                </div>
+                
+                <div className="p-4 bg-white/60 rounded-xl border border-purple-100 shadow-sm hover:shadow-md transition-all cursor-pointer">
+                  <h3 className="font-medium mb-2 flex items-center gap-2">
+                    <Brain size={16} className="text-purple-500" />
+                    Révisions intelligentes
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Recommandations basées sur vos performances
+                  </p>
+                </div>
+              </div>
+            </GlassCard>
           </TabsContent>
           
           <TabsContent value="exercises">
             <ExercisesList courseId={course.id} />
-          </TabsContent>
-          
-          <TabsContent value="materials">
-            <CourseMaterials courseId={course.id} />
           </TabsContent>
         </Tabs>
       </div>

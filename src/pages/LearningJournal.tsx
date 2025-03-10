@@ -19,7 +19,9 @@ import {
   Save,
   MessageSquare,
   UserCircle,
-  BookOpen as BookOpenIcon
+  BookOpen as BookOpenIcon,
+  CheckSquare,
+  Square
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -145,19 +147,19 @@ const LearningJournal = () => {
         {/* Tabs */}
         <Tabs defaultValue="goals" className="mb-6" onValueChange={setActiveTab}>
           <TabsList className="mb-6">
-            <TabsTrigger value="goals" className="flex items-center gap-2">
+            <TabsTrigger value="goals" className="flex items-center gap-2 shadow-sm hover:shadow-md">
               <Target size={16} />
               <span>Objectifs</span>
             </TabsTrigger>
-            <TabsTrigger value="notes" className="flex items-center gap-2">
+            <TabsTrigger value="notes" className="flex items-center gap-2 shadow-sm hover:shadow-md">
               <Edit3 size={16} />
               <span>Notes</span>
             </TabsTrigger>
-            <TabsTrigger value="feedback" className="flex items-center gap-2">
+            <TabsTrigger value="feedback" className="flex items-center gap-2 shadow-sm hover:shadow-md">
               <MessageSquare size={16} />
               <span>Retours</span>
             </TabsTrigger>
-            <TabsTrigger value="achievements" className="flex items-center gap-2">
+            <TabsTrigger value="achievements" className="flex items-center gap-2 shadow-sm hover:shadow-md">
               <Trophy size={16} />
               <span>Accomplissements</span>
             </TabsTrigger>
@@ -175,7 +177,7 @@ const LearningJournal = () => {
                 {goals.map((goal) => (
                   <div 
                     key={goal.id} 
-                    className={`p-4 rounded-lg flex items-start justify-between ${
+                    className={`p-4 rounded-lg flex items-start justify-between shadow-sm hover:shadow-md transition-all ${
                       goal.completed 
                         ? "bg-green-mint/10 border border-green-mint/20" 
                         : "bg-background/80"
@@ -190,7 +192,7 @@ const LearningJournal = () => {
                         }`}
                         onClick={() => toggleGoalCompletion(goal.id)}
                       >
-                        {goal.completed ? <CheckCircle2 size={18} /> : <Clock size={18} />}
+                        {goal.completed ? <CheckSquare size={18} /> : <Square size={18} />}
                       </Button>
                       
                       <div>
@@ -203,7 +205,7 @@ const LearningJournal = () => {
                       </div>
                     </div>
                     
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 shadow-sm hover:shadow-md">
                       <Edit3 size={14} />
                     </Button>
                   </div>
@@ -225,7 +227,7 @@ const LearningJournal = () => {
                       value={newGoalDeadline}
                       onChange={(e) => setNewGoalDeadline(e.target.value)}
                     />
-                    <Button onClick={addGoal}>
+                    <Button onClick={addGoal} className="shadow-md hover:shadow-lg">
                       <PlusCircle size={16} className="mr-2" />
                       Ajouter
                     </Button>
@@ -244,7 +246,7 @@ const LearningJournal = () => {
                 Basé sur vos objectifs et votre progression, voici une suggestion pour vous aider à avancer :
               </p>
               
-              <div className="p-4 bg-background/60 rounded-lg">
+              <div className="p-4 bg-background/60 rounded-lg shadow-sm hover:shadow-md transition-all">
                 <p className="italic">
                   "Pour améliorer votre compréhension en mathématiques, essayez de consacrer 20 minutes par jour 
                   à résoudre des problèmes variés. La régularité est plus efficace que de longues sessions intensives."

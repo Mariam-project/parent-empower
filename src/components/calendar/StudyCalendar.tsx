@@ -48,19 +48,37 @@ const StudyCalendar = () => {
     });
   };
 
+  // Add a new event
+  const addEvent = (event: CalendarEvent) => {
+    setEvents([...events, event]);
+    toast({
+      title: "Événement ajouté",
+      description: `L'événement "${event.title}" a été ajouté à votre emploi du temps.`,
+    });
+  };
+
+  // Remove an event
+  const removeEvent = (eventId: number) => {
+    setEvents(events.filter(event => event.id !== eventId));
+    toast({
+      title: "Événement supprimé",
+      description: "L'événement a été supprimé de votre emploi du temps.",
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary/50 to-background">
-      <GlassCard className="p-0 overflow-hidden min-h-screen">
-        <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen">
-          <CalendarSidebar date={date} setDate={setDate} />
-          <EventsPanel 
-            selectedDate={date}
-            selectedDateEvents={selectedDateEvents}
-            groupedEvents={groupedEvents}
-            onAddStudyBreak={addStudyBreak}
-          />
-        </div>
-      </GlassCard>
+    <div className="bg-gradient-to-br from-secondary/50 to-background min-h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen">
+        <CalendarSidebar date={date} setDate={setDate} />
+        <EventsPanel 
+          selectedDate={date}
+          selectedDateEvents={selectedDateEvents}
+          groupedEvents={groupedEvents}
+          onAddStudyBreak={addStudyBreak}
+          onAddEvent={addEvent}
+          onRemoveEvent={removeEvent}
+        />
+      </div>
     </div>
   );
 };

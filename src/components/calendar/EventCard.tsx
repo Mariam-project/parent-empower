@@ -1,13 +1,16 @@
 
 import React from "react";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { CalendarEvent } from "./types";
 
 interface EventCardProps {
   event: CalendarEvent;
   className?: string;
+  onRemove: () => void;
 }
 
-const EventCard = ({ event, className = "" }: EventCardProps) => {
+const EventCard = ({ event, className = "", onRemove }: EventCardProps) => {
   // Déterminer la couleur de fond en fonction du type d'événement
   const getBgColor = () => {
     switch (event.type) {
@@ -20,7 +23,7 @@ const EventCard = ({ event, className = "" }: EventCardProps) => {
   };
 
   return (
-    <div className={`p-4 rounded-lg border transition-colors duration-200 ${getBgColor()} ${className}`}>
+    <div className={`p-4 rounded-lg border transition-colors duration-200 ${getBgColor()} ${className} shadow-sm hover:shadow-md relative`}>
       <div className="flex justify-between items-start">
         <h5 className="font-medium">{event.title}</h5>
         {event.time && (
@@ -32,6 +35,14 @@ const EventCard = ({ event, className = "" }: EventCardProps) => {
       {event.description && (
         <p className="text-sm text-muted-foreground mt-2">{event.description}</p>
       )}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-6 w-6 absolute top-2 right-2 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 hover:opacity-100"
+        onClick={onRemove}
+      >
+        <X size={14} />
+      </Button>
     </div>
   );
 };
