@@ -14,6 +14,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import StudyCalendar from "./components/calendar/StudyCalendar";
 import ParentDashboard from "./pages/ParentDashboard";
+import ProfessorDashboard from "./pages/ProfessorDashboard";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Route path="/journal" element={<LearningJournal />} />
             <Route path="/calendar" element={<StudyCalendar />} />
             <Route path="/parent-dashboard" element={<ParentDashboard />} />
+            <Route path="/professor-dashboard" element={<ProfessorDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
