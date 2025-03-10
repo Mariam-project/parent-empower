@@ -2,15 +2,10 @@
 import React from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { 
-  FileText, 
-  Download, 
-  Video, 
-  Link as LinkIcon, 
-  BookOpen,
-  FilePlus2,
-  Play,
-  ExternalLink,
-  Sparkles
+  Brain,
+  Sparkles,
+  FileText,
+  Play
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -19,161 +14,86 @@ interface CourseMaterialsProps {
   courseId: number;
 }
 
-// Mock materials data
-const materialsByType = {
-  documents: [
-    { id: 1, title: "Support de cours complet", type: "pdf", size: "2.4 MB" },
-    { id: 2, title: "Résumé des concepts clés", type: "pdf", size: "1.1 MB" },
-    { id: 3, title: "Fiche de révision", type: "docx", size: "850 KB" },
-  ],
-  videos: [
-    { id: 1, title: "Introduction au chapitre", duration: "12:45" },
-    { id: 2, title: "Démonstration pratique", duration: "24:30" },
-  ],
-  links: [
-    { id: 1, title: "Ressource complémentaire", url: "#" },
-    { id: 2, title: "Article scientifique", url: "#" },
-  ]
-};
-
 const CourseMaterials: React.FC<CourseMaterialsProps> = ({ courseId }) => {
   const { toast } = useToast();
   
-  const downloadMaterial = (materialId: number, title: string) => {
+  const generateStudyMaterial = (type: string) => {
     toast({
-      title: "Téléchargement démarré",
-      description: `${title} sera disponible dans quelques instants.`,
-    });
-  };
-  
-  const openVideo = (materialId: number, title: string) => {
-    toast({
-      title: "Vidéo en cours de chargement",
-      description: `${title} va s'ouvrir dans un lecteur.`,
+      title: "Génération en cours",
+      description: `Votre ${type} personnalisée est en cours de création...`,
     });
   };
 
   return (
     <div className="space-y-6">
-      {/* Documents section */}
-      <GlassCard>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-            <FileText size={18} />
+      {/* AI Study Assistant Card */}
+      <GlassCard className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200/50">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+            <Brain size={24} className="text-blue-500" />
           </div>
-          <h2 className="text-xl font-medium">Documents</h2>
-        </div>
-        
-        <div className="space-y-3">
-          {materialsByType.documents.map((doc) => (
-            <div key={doc.id} className="flex items-center justify-between p-3 bg-background/80 rounded-lg">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded bg-primary/5">
-                  <FileText size={16} className="text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium">{doc.title}</p>
-                  <p className="text-xs text-muted-foreground">{doc.type.toUpperCase()} • {doc.size}</p>
-                </div>
-              </div>
-              <Button 
-                size="sm" 
-                variant="ghost" 
-                onClick={() => downloadMaterial(doc.id, doc.title)}
-              >
-                <Download size={16} />
-              </Button>
-            </div>
-          ))}
-        </div>
-      </GlassCard>
-      
-      {/* Videos section */}
-      <GlassCard>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-            <Video size={18} />
+          <div>
+            <h2 className="text-xl font-semibold mb-1">Assistant IA de révision</h2>
+            <p className="text-sm text-muted-foreground">
+              Créez des fiches de révision personnalisées et optimisez votre apprentissage
+            </p>
           </div>
-          <h2 className="text-xl font-medium">Vidéos</h2>
         </div>
         
-        <div className="space-y-3">
-          {materialsByType.videos.map((video) => (
-            <div key={video.id} className="flex items-center justify-between p-3 bg-background/80 rounded-lg">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded bg-primary/5">
-                  <Video size={16} className="text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium">{video.title}</p>
-                  <p className="text-xs text-muted-foreground">Durée: {video.duration}</p>
-                </div>
-              </div>
-              <Button 
-                size="sm" 
-                variant="ghost" 
-                onClick={() => openVideo(video.id, video.title)}
-              >
-                <Play size={16} />
-              </Button>
-            </div>
-          ))}
-        </div>
-      </GlassCard>
-      
-      {/* Links section */}
-      <GlassCard>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-            <LinkIcon size={18} />
-          </div>
-          <h2 className="text-xl font-medium">Liens utiles</h2>
-        </div>
-        
-        <div className="space-y-3">
-          {materialsByType.links.map((link) => (
-            <div key={link.id} className="flex items-center justify-between p-3 bg-background/80 rounded-lg">
-              <div className="flex items-center gap-3">
-                <div className="p-2 rounded bg-primary/5">
-                  <LinkIcon size={16} className="text-primary" />
-                </div>
-                <div>
-                  <p className="font-medium">{link.title}</p>
-                  <p className="text-xs text-muted-foreground">Ressource externe</p>
-                </div>
-              </div>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                <Button size="sm" variant="ghost">
-                  <ExternalLink size={16} />
-                </Button>
-              </a>
-            </div>
-          ))}
-        </div>
-      </GlassCard>
-      
-      {/* AI Generated content */}
-      <GlassCard className="border border-dashed border-primary/30">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-            <FilePlus2 size={18} />
-          </div>
-          <h2 className="text-xl font-medium">Générer une ressource personnalisée</h2>
-        </div>
-        
-        <p className="text-muted-foreground mb-4">
-          Utilisez l'IA pour créer une fiche de révision ou un résumé adapté à votre style d'apprentissage.
-        </p>
-        
-        <div className="flex gap-2">
-          <Button>
-            <BookOpen size={16} className="mr-2" />
-            Générer une fiche
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Button 
+            className="w-full bg-blue-500 hover:bg-blue-600"
+            onClick={() => generateStudyMaterial('fiche de révision')}
+          >
+            <FileText size={16} className="mr-2" />
+            Créer une fiche de révision
           </Button>
-          <Button variant="outline">
-            <Sparkles size={16} className="mr-2" />
-            Résumer le cours
+          
+          <Button 
+            variant="outline"
+            className="w-full border-blue-200 hover:bg-blue-50"
+            onClick={() => generateStudyMaterial('synthèse')}
+          >
+            <Brain size={16} className="mr-2" />
+            Générer une synthèse
           </Button>
+        </div>
+      </GlassCard>
+      
+      {/* AI Features Card */}
+      <GlassCard className="bg-gradient-to-br from-purple-50 to-rose-50 border-purple-200/50">
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
+            <Sparkles size={24} className="text-purple-500" />
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-1">Fonctionnalités intelligentes</h2>
+            <p className="text-sm text-muted-foreground">
+              Exploitez la puissance de l'IA pour améliorer votre apprentissage
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-4 bg-white/60 rounded-xl border border-purple-100">
+            <h3 className="font-medium mb-2 flex items-center gap-2">
+              <Play size={16} className="text-purple-500" />
+              Quiz adaptatif
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Questions générées en fonction de votre niveau
+            </p>
+          </div>
+          
+          <div className="p-4 bg-white/60 rounded-xl border border-purple-100">
+            <h3 className="font-medium mb-2 flex items-center gap-2">
+              <Brain size={16} className="text-purple-500" />
+              Révisions intelligentes
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Recommandations basées sur vos performances
+            </p>
+          </div>
         </div>
       </GlassCard>
     </div>

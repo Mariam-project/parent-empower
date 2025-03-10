@@ -2,7 +2,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, FileText, CalendarDays, Brain, Palmtree, Sparkles } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import EventGroup from "./EventGroup";
 import NoEvents from "./NoEvents";
 import { CalendarEvent } from "./types";
@@ -26,39 +25,38 @@ const EventsPanel = ({
   onAddStudyBreak 
 }: EventsPanelProps) => {
   return (
-    <div className="md:col-span-7 lg:col-span-8 p-6 md:p-8 overflow-y-auto max-h-screen bg-gray-50/50">
-      <div className="max-w-3xl mx-auto">
+    <div className="col-span-12 lg:col-span-9 p-6 md:p-8 min-h-screen bg-gray-50/50">
+      <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-semibold">
+          <h3 className="text-2xl font-semibold">
             {selectedDate ? selectedDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) : "Sélectionnez une date"}
           </h3>
           <Button 
             variant="outline" 
-            size="sm" 
             onClick={onAddStudyBreak} 
             className="flex items-center gap-1 bg-white hover:bg-gray-50"
           >
-            <Plus size={14} />
-            <span>Ajouter une pause</span>
+            <Plus size={16} />
+            <span>Ajouter un événement</span>
           </Button>
         </div>
         
         {selectedDateEvents.length === 0 ? (
           <NoEvents />
         ) : (
-          <div className="space-y-6">
-            <EventGroup 
-              title="Devoirs" 
-              events={groupedEvents.assignment} 
-              icon={<FileText size={16} className="text-rose-500" />} 
-              colorClass="primary" 
-            />
-            
+          <div className="grid grid-cols-1 gap-6">
             <EventGroup 
               title="Cours" 
               events={groupedEvents.lecture} 
               icon={<CalendarDays size={16} className="text-blue-500" />} 
               colorClass="blue-pastel-light" 
+            />
+            
+            <EventGroup 
+              title="Devoirs" 
+              events={groupedEvents.assignment} 
+              icon={<FileText size={16} className="text-rose-500" />} 
+              colorClass="primary" 
             />
             
             <EventGroup 
@@ -69,25 +67,33 @@ const EventsPanel = ({
             />
             
             <EventGroup 
-              title="Pauses bien-être" 
+              title="Pauses" 
               events={groupedEvents.break} 
               icon={<Palmtree size={16} className="text-green-500" />} 
               colorClass="green-mint" 
             />
             
-            {/* AI Suggestion Panel */}
-            <div className="p-5 border border-blue-200 rounded-xl mt-8 bg-blue-50/50 shadow-sm">
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles size={18} className="text-blue-500" />
-                <h4 className="font-medium text-blue-700">Suggestion IA</h4>
+            {/* AI Study Assistant */}
+            <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100/50 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                  <Sparkles size={20} className="text-blue-500" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-lg">Assistant IA de révision</h4>
+                  <p className="text-sm text-muted-foreground">Optimisez votre temps d'étude avec l'IA</p>
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">
-                D'après votre emploi du temps, il serait idéal de prévoir une session de révision 
-                avant votre échéance de Mathématiques. Voulez-vous l'ajouter ?
-              </p>
-              <Button size="sm" variant="outline" className="w-full bg-white hover:bg-gray-50">
-                Ajouter à mon planning
-              </Button>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <Button variant="default" className="w-full bg-blue-500 hover:bg-blue-600">
+                  <Brain size={16} className="mr-2" />
+                  Créer une fiche de révision
+                </Button>
+                <Button variant="outline" className="w-full border-blue-200 hover:bg-blue-50">
+                  <Sparkles size={16} className="mr-2" />
+                  Planifier mes révisions
+                </Button>
+              </div>
             </div>
           </div>
         )}
