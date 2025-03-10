@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
@@ -18,9 +19,7 @@ import {
   Plus,
   CheckCheck,
   MessageCircle,
-  Bell,
-  Calendar as CalendarIcon,
-  FileText
+  Bell
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
