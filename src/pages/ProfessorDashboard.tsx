@@ -7,7 +7,7 @@ import ResourceCreator from "@/components/professor/ResourceCreator";
 import CourseManager from "@/components/professor/CourseManager";
 import CommunicationCenter from "@/components/professor/CommunicationCenter";
 import LearningAnalytics from "@/components/professor/LearningAnalytics";
-import { BookCopy, Users, Calendar, MessageSquare, BarChart, Trophy } from "lucide-react";
+import { BookCopy, Users, Calendar, MessageSquare, BarChart } from "lucide-react";
 
 const ProfessorDashboard = () => {
   const [activeTab, setActiveTab] = useState("students");
