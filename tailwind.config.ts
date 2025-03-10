@@ -70,6 +70,10 @@ export default {
 				"yellow-soft": "#FDE68A",
 				"gray-light": "#F5F5F5",
 				"purple-light": "#C3A2F1",
+                // New gray button colors
+                "button-gray": "#F1F1F1",
+                "button-gray-hover": "#E5E5E5",
+                "button-gray-border": "#DEDEDE",
 			},
 			fontFamily: {
 				sans: ['Inter var', 'sans-serif'],
@@ -133,9 +137,10 @@ export default {
 				'glass-hover': '0 4px 30px rgba(0, 0, 0, 0.15)',
 				'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'button': '0 1px 2px rgba(0, 0, 0, 0.05)',
+                'button-gray': '0 1px 3px rgba(0, 0, 0, 0.1)',
+                'button-hover': '0 2px 5px rgba(0, 0, 0, 0.15)',
 			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
