@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { 
   Users, Search, UserCheck, UserX, Clock, Award, 
-  ChevronDown, ChevronUp, BarChart3
+  ChevronDown, ChevronUp, BarChart3, MessageSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

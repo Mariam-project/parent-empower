@@ -19,7 +19,9 @@ import {
   Plus,
   CheckCheck,
   MessageCircle,
-  Bell
+  Bell,
+  Calendar as CalendarIcon,
+  FileText
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
