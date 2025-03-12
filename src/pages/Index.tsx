@@ -60,7 +60,110 @@ const Index = () => {
         <div className="absolute top-20 -left-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
       </section>
       
-      {/* Features Section */}
+      {/* User Types Section - MOVED HIGHER */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl font-display font-bold tracking-tight mb-4 animate-fade-up">
+              Une solution pour chacun
+            </h2>
+            <p className="text-muted-foreground animate-fade-up" style={{ animationDelay: "100ms" }}>
+              ParentEmpower s'adapte à tous les acteurs de l'éducation
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Students */}
+            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "200ms" }}>
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <BookOpenCheck size={32} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-medium mb-4">Pour les élèves</h3>
+              <ul className="space-y-3 text-left mb-6">
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Cours interactifs engageants</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Système de gamification motivant</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Fiches personnalisées par IA</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Certification pour Parcoursup</span>
+                </li>
+              </ul>
+              <Link to="/dashboard">
+                <Button className="w-full">Espace élève</Button>
+              </Link>
+            </GlassCard>
+            
+            {/* Parents */}
+            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "300ms" }}>
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Users size={32} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-medium mb-4">Pour les parents</h3>
+              <ul className="space-y-3 text-left mb-6">
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Suivi simplifié des progrès</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Notifications positives</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Guides pour comprendre le numérique</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Communication avec les enseignants</span>
+                </li>
+              </ul>
+              <Link to="/parent-dashboard">
+                <Button className="w-full">Espace parent</Button>
+              </Link>
+            </GlassCard>
+            
+            {/* Teachers */}
+            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "400ms" }}>
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <FileText size={32} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-medium mb-4">Pour les professeurs</h3>
+              <ul className="space-y-3 text-left mb-6">
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Suivi des élèves en temps réel</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Création de ressources pédagogiques</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Communication facilitée</span>
+                </li>
+                <li className="flex items-start">
+                  <Check size={18} className="text-primary mr-2 mt-0.5" />
+                  <span>Statistiques d'apprentissage</span>
+                </li>
+              </ul>
+              <Link to="/teacher-dashboard">
+                <Button className="w-full">Espace professeur</Button>
+              </Link>
+            </GlassCard>
+          </div>
+        </div>
+      </section>
+      
+      {/* Features Section - MOVED LOWER */}
       <section className="py-20 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -185,109 +288,6 @@ const Index = () => {
                   </li>
                 ))}
               </ul>
-            </GlassCard>
-          </div>
-        </div>
-      </section>
-      
-      {/* User Types Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-display font-bold tracking-tight mb-4 animate-fade-up">
-              Une solution pour chacun
-            </h2>
-            <p className="text-muted-foreground animate-fade-up" style={{ animationDelay: "100ms" }}>
-              ParentEmpower s'adapte à tous les acteurs de l'éducation
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Students */}
-            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "200ms" }}>
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                <BookOpenCheck size={32} className="text-primary" />
-              </div>
-              <h3 className="text-2xl font-medium mb-4">Pour les élèves</h3>
-              <ul className="space-y-3 text-left mb-6">
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Cours interactifs engageants</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Système de gamification motivant</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Fiches personnalisées par IA</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Certification pour Parcoursup</span>
-                </li>
-              </ul>
-              <Link to="/dashboard">
-                <Button className="w-full">Espace élève</Button>
-              </Link>
-            </GlassCard>
-            
-            {/* Parents */}
-            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                <Users size={32} className="text-primary" />
-              </div>
-              <h3 className="text-2xl font-medium mb-4">Pour les parents</h3>
-              <ul className="space-y-3 text-left mb-6">
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Suivi simplifié des progrès</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Notifications positives</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Guides pour comprendre le numérique</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Communication avec les enseignants</span>
-                </li>
-              </ul>
-              <Link to="/parent-dashboard">
-                <Button className="w-full">Espace parent</Button>
-              </Link>
-            </GlassCard>
-            
-            {/* Teachers */}
-            <GlassCard className="text-center animate-fade-up" style={{ animationDelay: "400ms" }}>
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                <FileText size={32} className="text-primary" />
-              </div>
-              <h3 className="text-2xl font-medium mb-4">Pour les professeurs</h3>
-              <ul className="space-y-3 text-left mb-6">
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Suivi des élèves en temps réel</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Création de ressources pédagogiques</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Communication facilitée</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={18} className="text-primary mr-2 mt-0.5" />
-                  <span>Statistiques d'apprentissage</span>
-                </li>
-              </ul>
-              <Link to="/teacher-dashboard">
-                <Button className="w-full">Espace professeur</Button>
-              </Link>
             </GlassCard>
           </div>
         </div>

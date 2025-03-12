@@ -16,11 +16,59 @@ import {
   Star,
   Award,
   Brain,
-  Sparkles
+  Sparkles,
+  LucidePlayCircle,
+  Video,
+  BookOpenCheck,
+  Check
 } from "lucide-react";
 import { coursesData } from "@/data/coursesData";
 import ExercisesList from "@/components/courses/ExercisesList";
 import { useToast } from "@/hooks/use-toast";
+
+const LessonStatusBadge = ({ status }: { status: 'completed' | 'in-progress' | 'locked' | 'not-started' }) => {
+  const getStatusConfig = () => {
+    switch (status) {
+      case 'completed':
+        return {
+          bgColor: 'bg-green-mint',
+          icon: <CheckCircle size={14} className="text-green-700" />,
+          text: 'Complété',
+          textColor: 'text-green-700'
+        };
+      case 'in-progress':
+        return {
+          bgColor: 'bg-yellow-soft',
+          icon: <Play size={14} className="text-amber-700" />,
+          text: 'En cours',
+          textColor: 'text-amber-700'
+        };
+      case 'locked':
+        return {
+          bgColor: 'bg-gray-200',
+          icon: null,
+          text: 'Verrouillé',
+          textColor: 'text-gray-500'
+        };
+      default:
+        return {
+          bgColor: 'bg-blue-pastel-light',
+          icon: null,
+          text: 'À commencer',
+          textColor: 'text-blue-700'
+        };
+    }
+  };
+
+  const { bgColor, icon, text, textColor } = getStatusConfig();
+
+  return (
+    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${bgColor} ${textColor}`}>
+      {icon}
+      {text}
+    </span>
+  );
+};
 
 const CourseDetail = () => {
   const { courseId } = useParams();
@@ -52,6 +100,55 @@ const CourseDetail = () => {
       </div>
     );
   }
+
+  // Sample lesson data to simulate a course like Kartable/SchoolMouv
+  const lessonModules = [
+    {
+      id: 1,
+      title: "Introduction aux concepts fondamentaux",
+      duration: "15 min",
+      type: "video",
+      status: "completed" as const,
+      progress: 100,
+      icon: <Video size={16} />
+    },
+    {
+      id: 2,
+      title: "Définitions et formules importantes",
+      duration: "20 min",
+      type: "lesson",
+      status: "completed" as const,
+      progress: 100,
+      icon: <BookOpen size={16} />
+    },
+    {
+      id: 3,
+      title: "Exemples et applications",
+      duration: "25 min",
+      type: "interactive",
+      status: "in-progress" as const,
+      progress: 70,
+      icon: <Play size={16} />
+    },
+    {
+      id: 4,
+      title: "Exercices d'entraînement",
+      duration: "30 min",
+      type: "exercise",
+      status: "not-started" as const,
+      progress: 0,
+      icon: <PenSquare size={16} />
+    },
+    {
+      id: 5,
+      title: "Quiz de vérification des connaissances",
+      duration: "15 min",
+      type: "quiz",
+      status: "locked" as const,
+      progress: 0,
+      icon: <CheckCircle size={16} />
+    }
+  ];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -194,27 +291,79 @@ const CourseDetail = () => {
           </TabsList>
           
           <TabsContent value="content" className="space-y-6">
+            {/* Style Kartable/SchoolMouv pour les leçons */}
             <GlassCard>
-              <h2 className="text-xl font-medium mb-4">Modules du cours</h2>
+              <h2 className="text-xl font-medium mb-6">Programme du cours</h2>
+              
               <div className="space-y-4">
-                {[...Array(course.lessons)].map((_, i) => (
-                  <div key={i} className="bg-background/80 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                          <span className="text-sm font-medium">{i + 1}</span>
+                {lessonModules.map((lesson) => (
+                  <div 
+                    key={lesson.id} 
+                    className={`
+                      rounded-xl p-4 border transition-all duration-200
+                      ${lesson.status === 'completed' ? 'bg-green-mint/10 border-green-mint/30' : 
+                        lesson.status === 'in-progress' ? 'bg-yellow-soft/10 border-yellow-soft/30' : 
+                        lesson.status === 'locked' ? 'bg-gray-100 border-gray-200 opacity-70' : 
+                        'bg-white border-blue-pastel-light/30'}
+                    `}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className={`
+                          w-10 h-10 rounded-full flex items-center justify-center
+                          ${lesson.status === 'completed' ? 'bg-green-mint text-green-700' : 
+                            lesson.status === 'in-progress' ? 'bg-yellow-soft text-amber-700' :
+                            lesson.status === 'locked' ? 'bg-gray-200 text-gray-500' : 
+                            'bg-blue-pastel-light text-blue-700'}
+                        `}>
+                          {lesson.status === 'completed' ? 
+                            <Check size={18} /> : lesson.icon}
                         </div>
+                        
                         <div>
-                          <h3 className="font-medium">Leçon {i + 1}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {i < course.progress / (100 / course.lessons) ? "Complété" : "Non complété"}
-                          </p>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm font-medium text-muted-foreground">
+                              Leçon {lesson.id}
+                            </span>
+                            <LessonStatusBadge status={lesson.status} />
+                          </div>
+                          
+                          <h3 className="font-medium">{lesson.title}</h3>
+                          
+                          <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Clock size={12} />
+                              {lesson.duration}
+                            </span>
+                            {lesson.progress > 0 && lesson.progress < 100 && (
+                              <span>Progression: {lesson.progress}%</span>
+                            )}
+                          </div>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm" className="shadow-sm hover:shadow-md">
-                        {i < course.progress / (100 / course.lessons) ? "Revoir" : "Commencer"}
+                      
+                      <Button 
+                        variant={lesson.status === 'locked' ? "outline" : "default"}
+                        size="sm"
+                        disabled={lesson.status === 'locked'}
+                        className={`
+                          shadow-sm hover:shadow-md
+                          ${lesson.status === 'completed' ? 'bg-green-mint hover:bg-green-mint/90' : 
+                            lesson.status === 'in-progress' ? '' :
+                            lesson.status === 'locked' ? 'bg-gray-100 hover:bg-gray-100' : ''}
+                        `}
+                      >
+                        {lesson.status === 'completed' ? 'Revoir' : 
+                         lesson.status === 'in-progress' ? 'Continuer' :
+                         lesson.status === 'locked' ? 'Verrouillé' : 'Commencer'}
                       </Button>
                     </div>
+                    
+                    {lesson.status === 'in-progress' && (
+                      <div className="mt-3">
+                        <Progress value={lesson.progress} className="h-1.5" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
