@@ -127,25 +127,25 @@ const LessonView = () => {
                     <div className="p-4 bg-white/60 rounded-lg">
                       <h4 className="font-medium mb-2">Définition de la dérivée</h4>
                       <p className="mb-3">
-                        Soit f une fonction définie sur un intervalle I. La dérivée de f au point x₀ ∈ I, notée f'(x₀), 
-                        est définie comme la limite du taux de variation de f au voisinage de x₀ lorsque l'accroissement 
+                        Soit f une fonction définie sur un intervalle I. La dérivée de f au point x₀ ∈ I, notée f&apos;(x₀), 
+                        est définie comme la limite du taux de variation de f au voisinage de x₀ lorsque l&apos;accroissement 
                         de x tend vers 0.
                       </p>
                       
                       <div className="bg-gray-50 p-3 rounded-md mb-3 font-mono text-center">
-                        <MathContent formula="f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}" />
+                        <MathContent formula="f'(x_0) = \\lim_{h \\to 0} \\frac{f(x_0 + h) - f(x_0)}{h}" />
                       </div>
                       
                       <p>
                         Si cette limite existe, on dit que f est dérivable au point x₀. Si f est dérivable en tout point 
-                        d'un intervalle I, alors la fonction x ↦ f'(x) définie sur I est appelée la fonction dérivée de f.
+                        d&apos;un intervalle I, alors la fonction x ↦ f&apos;(x) définie sur I est appelée la fonction dérivée de f.
                       </p>
                     </div>
                     
                     <div className="p-4 bg-white/60 rounded-lg">
                       <h4 className="font-medium mb-2">Interprétation géométrique</h4>
                       <p className="mb-3">
-                        Géométriquement, la dérivée f'(x₀) représente la pente de la tangente à la courbe 
+                        Géométriquement, la dérivée f&apos;(x₀) représente la pente de la tangente à la courbe 
                         représentative de f au point de coordonnées (x₀, f(x₀)).
                       </p>
                       
@@ -156,9 +156,9 @@ const LessonView = () => {
                       </div>
                       
                       <ul className="list-disc pl-5 space-y-1">
-                        <li>Si f'(x₀) > 0, la fonction est strictement croissante au voisinage de x₀.</li>
-                        <li>Si f'(x₀) < 0, la fonction est strictement décroissante au voisinage de x₀.</li>
-                        <li>Si f'(x₀) = 0, la tangente à la courbe au point (x₀, f(x₀)) est horizontale.</li>
+                        <li>Si f&apos;(x₀) &gt; 0, la fonction est strictement croissante au voisinage de x₀.</li>
+                        <li>Si f&apos;(x₀) &lt; 0, la fonction est strictement décroissante au voisinage de x₀.</li>
+                        <li>Si f&apos;(x₀) = 0, la tangente à la courbe au point (x₀, f(x₀)) est horizontale.</li>
                       </ul>
                     </div>
                   </div>
@@ -198,7 +198,7 @@ const LessonView = () => {
                         </div>
                         <div className="p-2 border border-dashed border-yellow-soft/50 rounded flex items-center">
                           <div className="w-32 font-medium">Fonction logarithme:</div>
-                          <MathContent formula="(\ln x)' = \frac{1}{x}" />
+                          <MathContent formula="(\\ln x)' = \\frac{1}{x}" />
                         </div>
                       </div>
                     </div>
@@ -212,19 +212,19 @@ const LessonView = () => {
                       <div className="space-y-2">
                         <div className="p-2 border border-dashed border-yellow-soft/50 rounded">
                           <div className="font-medium mb-1">Linéarité:</div>
-                          <MathContent formula="(\alpha u + \beta v)' = \alpha u' + \beta v'" />
+                          <MathContent formula="(\\alpha u + \\beta v)' = \\alpha u' + \\beta v'" />
                         </div>
                         <div className="p-2 border border-dashed border-yellow-soft/50 rounded">
                           <div className="font-medium mb-1">Produit:</div>
-                          <MathContent formula="(u \times v)' = u' \times v + u \times v'" />
+                          <MathContent formula="(u \\times v)' = u' \\times v + u \\times v'" />
                         </div>
                         <div className="p-2 border border-dashed border-yellow-soft/50 rounded">
                           <div className="font-medium mb-1">Quotient:</div>
-                          <MathContent formula="\left(\frac{u}{v}\right)' = \frac{u' \times v - u \times v'}{v^2}" />
+                          <MathContent formula="\\left(\\frac{u}{v}\\right)' = \\frac{u' \\times v - u \\times v'}{v^2}" />
                         </div>
                         <div className="p-2 border border-dashed border-yellow-soft/50 rounded">
                           <div className="font-medium mb-1">Composée:</div>
-                          <MathContent formula="(u \circ v)' = (u' \circ v) \times v'" />
+                          <MathContent formula="(u \\circ v)' = (u' \\circ v) \\times v'" />
                         </div>
                       </div>
                     </div>
@@ -253,10 +253,10 @@ const LessonView = () => {
                         <p className="font-medium">Solution:</p>
                         <div className="space-y-1">
                           <p>f(x) = 3x² - 2x + 4</p>
-                          <p>f'(x) = (3x²)' - (2x)' + (4)'</p>
-                          <p>f'(x) = 3(x²)' - 2(x)' + 0</p>
-                          <p>f'(x) = 3 × 2x - 2 × 1</p>
-                          <p>f'(x) = 6x - 2</p>
+                          <p>f&apos;(x) = (3x²)&apos; - (2x)&apos; + (4)&apos;</p>
+                          <p>f&apos;(x) = 3(x²)&apos; - 2(x)&apos; + 0</p>
+                          <p>f&apos;(x) = 3 × 2x - 2 × 1</p>
+                          <p>f&apos;(x) = 6x - 2</p>
                         </div>
                       </div>
                     </div>
@@ -271,27 +271,27 @@ const LessonView = () => {
                         <div className="space-y-1">
                           <p>Posons u(x) = x² + 1 et v(x) = 3x - 5.</p>
                           <p>g(x) = u(x) × v(x)</p>
-                          <p>g'(x) = u'(x) × v(x) + u(x) × v'(x)</p>
-                          <p>u'(x) = 2x et v'(x) = 3</p>
-                          <p>g'(x) = 2x × (3x - 5) + (x² + 1) × 3</p>
-                          <p>g'(x) = 6x² - 10x + 3x² + 3</p>
-                          <p>g'(x) = 9x² - 10x + 3</p>
+                          <p>g&apos;(x) = u&apos;(x) × v(x) + u(x) × v&apos;(x)</p>
+                          <p>u&apos;(x) = 2x et v&apos;(x) = 3</p>
+                          <p>g&apos;(x) = 2x × (3x - 5) + (x² + 1) × 3</p>
+                          <p>g&apos;(x) = 6x² - 10x + 3x² + 3</p>
+                          <p>g&apos;(x) = 9x² - 10x + 3</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="p-4 bg-white/60 rounded-lg">
-                      <h4 className="font-medium mb-2">Exemple 3: Application à l'étude des variations</h4>
+                      <h4 className="font-medium mb-2">Exemple 3: Application à l&apos;étude des variations</h4>
                       <p className="mb-2">
                         Étudions les variations de la fonction h définie par h(x) = x³ - 3x² + 2 sur ℝ.
                       </p>
                       <div className="bg-gray-50 p-3 rounded-md mb-3">
                         <p className="font-medium">Solution:</p>
                         <div className="space-y-1">
-                          <p>h'(x) = 3x² - 6x = 3x(x - 2)</p>
-                          <p>h'(x) = 0 ⟺ x = 0 ou x = 2</p>
-                          <p>h'(x) > 0 ⟺ x < 0 ou x > 2</p>
-                          <p>h'(x) < 0 ⟺ 0 < x < 2</p>
+                          <p>h&apos;(x) = 3x² - 6x = 3x(x - 2)</p>
+                          <p>h&apos;(x) = 0 ⟺ x = 0 ou x = 2</p>
+                          <p>h&apos;(x) &gt; 0 ⟺ x &lt; 0 ou x &gt; 2</p>
+                          <p>h&apos;(x) &lt; 0 ⟺ 0 &lt; x &lt; 2</p>
                         </div>
                         <p className="mt-2">Tableau de variations:</p>
                         <div className="mt-1 border border-gray-300 rounded p-2 text-center">
@@ -320,11 +320,11 @@ const LessonView = () => {
                   <div className="mt-4 space-y-3">
                     <p>Dans cette leçon, nous avons vu:</p>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>La définition de la dérivée d'une fonction en un point</li>
-                      <li>L'interprétation géométrique de la dérivée comme pente de la tangente</li>
+                      <li>La définition de la dérivée d&apos;une fonction en un point</li>
+                      <li>L&apos;interprétation géométrique de la dérivée comme pente de la tangente</li>
                       <li>Les dérivées des fonctions élémentaires (constante, identité, puissance, exponentielle, logarithme)</li>
                       <li>Les règles de dérivation pour les opérations sur les fonctions (somme, produit, quotient, composée)</li>
-                      <li>Des exemples de calcul de dérivées et d'application à l'étude des variations</li>
+                      <li>Des exemples de calcul de dérivées et d&apos;application à l&apos;étude des variations</li>
                     </ul>
                   </div>
                 )}
