@@ -26,6 +26,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
@@ -150,6 +152,7 @@ const CommunicationCenter = () => {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Filtrer par</DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => setFilter("all")}>
                       Tous
                     </DropdownMenuItem>

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import GlassCard from "@/components/ui/GlassCard";
@@ -101,7 +100,6 @@ const CourseDetail = () => {
     );
   }
 
-  // Sample lesson data to simulate a course like Kartable/SchoolMouv
   const lessonModules = [
     {
       id: 1,
@@ -153,7 +151,6 @@ const CourseDetail = () => {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 md:px-6">
-        {/* Header with navigation */}
         <div className="mb-6 flex items-center">
           <Link to="/courses" className="text-muted-foreground hover:text-foreground transition-colors mr-4">
             <ArrowLeft size={20} />
@@ -161,7 +158,6 @@ const CourseDetail = () => {
           <h1 className="text-2xl md:text-3xl font-display font-bold">{course.title}</h1>
         </div>
         
-        {/* Course hero section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <GlassCard className="lg:col-span-2 overflow-hidden">
             <div className="relative h-64 w-full rounded-lg -m-6 mb-4 overflow-hidden">
@@ -283,7 +279,6 @@ const CourseDetail = () => {
           </GlassCard>
         </div>
         
-        {/* Course tabs */}
         <Tabs defaultValue="content" className="w-full" onValueChange={setActiveTab}>
           <TabsList className="mb-6">
             <TabsTrigger value="content">Contenu du cours</TabsTrigger>
@@ -291,7 +286,6 @@ const CourseDetail = () => {
           </TabsList>
           
           <TabsContent value="content" className="space-y-6">
-            {/* Style Kartable/SchoolMouv pour les leçons */}
             <GlassCard>
               <h2 className="text-xl font-medium mb-6">Programme du cours</h2>
               
@@ -342,21 +336,25 @@ const CourseDetail = () => {
                         </div>
                       </div>
                       
-                      <Button 
-                        variant={lesson.status === 'locked' ? "outline" : "default"}
-                        size="sm"
-                        disabled={lesson.status === 'locked'}
-                        className={`
-                          shadow-sm hover:shadow-md
-                          ${lesson.status === 'completed' ? 'bg-green-mint hover:bg-green-mint/90' : 
-                            lesson.status === 'in-progress' ? '' :
-                            lesson.status === 'locked' ? 'bg-gray-100 hover:bg-gray-100' : ''}
-                        `}
+                      <Link 
+                        to={`/course/${courseId}/lesson/${lesson.id}`}
                       >
-                        {lesson.status === 'completed' ? 'Revoir' : 
-                         lesson.status === 'in-progress' ? 'Continuer' :
-                         lesson.status === 'locked' ? 'Verrouillé' : 'Commencer'}
-                      </Button>
+                        <Button 
+                          variant={lesson.status === 'locked' ? "outline" : "default"}
+                          size="sm"
+                          disabled={lesson.status === 'locked'}
+                          className={`
+                            shadow-sm hover:shadow-md
+                            ${lesson.status === 'completed' ? 'bg-green-mint hover:bg-green-mint/90' : 
+                              lesson.status === 'in-progress' ? '' :
+                              lesson.status === 'locked' ? 'bg-gray-100 hover:bg-gray-100' : ''}
+                          `}
+                        >
+                          {lesson.status === 'completed' ? 'Revoir' : 
+                           lesson.status === 'in-progress' ? 'Continuer' :
+                           lesson.status === 'locked' ? 'Verrouillé' : 'Commencer'}
+                        </Button>
+                      </Link>
                     </div>
                     
                     {lesson.status === 'in-progress' && (
@@ -369,7 +367,6 @@ const CourseDetail = () => {
               </div>
             </GlassCard>
             
-            {/* AI Study Materials - Moved from Resources tab */}
             <GlassCard className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200/50">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
@@ -403,7 +400,6 @@ const CourseDetail = () => {
               </div>
             </GlassCard>
             
-            {/* AI Features Card - Moved from Resources tab */}
             <GlassCard className="bg-gradient-to-br from-purple-50 to-rose-50 border-purple-200/50">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
@@ -451,3 +447,4 @@ const CourseDetail = () => {
 };
 
 export default CourseDetail;
+

@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Courses from "./pages/Courses";
 import CourseDetail from "./pages/CourseDetail";
+import LessonView from "./pages/LessonView";
 import LearningJournal from "./pages/LearningJournal";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/layout/Navbar";
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/course/:courseId" element={<CourseDetail />} />
+            <Route path="/course/:courseId/lesson/:lessonId" element={<LessonView />} />
             <Route path="/journal" element={<LearningJournal />} />
             <Route path="/calendar" element={<StudyCalendar />} />
             <Route path="/parent-dashboard" element={<ParentDashboard />} />
