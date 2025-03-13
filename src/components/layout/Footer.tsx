@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -22,7 +21,7 @@ const Footer = () => {
           <div className="space-y-4 animate-fade-up" style={{ animationDelay: "0ms" }}>
             <Link to="/" className="flex items-center space-x-2">
               <span className="font-display font-bold text-xl text-primary">
-                ParentEmpower
+                EduNova
               </span>
             </Link>
             <p className="text-muted-foreground">
@@ -164,7 +163,7 @@ const Footer = () => {
         {/* Copyright & Legal Links */}
         <div className="mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ParentEmpower. Tous droits réservés.
+            © {new Date().getFullYear()} EduNova. Tous droits réservés.
           </p>
         </div>
       </div>

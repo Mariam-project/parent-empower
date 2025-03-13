@@ -17,6 +17,9 @@ import StudyCalendar from "./components/calendar/StudyCalendar";
 import ParentDashboard from "./pages/ParentDashboard";
 import ProfessorDashboard from "./pages/ProfessorDashboard";
 
+// Mettre à jour le titre du document
+document.title = "EduNova - Plateforme éducative interactive";
+
 const queryClient = new QueryClient();
 
 const App = () => (

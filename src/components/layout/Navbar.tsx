@@ -43,8 +43,8 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2 animate-fade-in"
           >
-            <span className="font-display font-bold text-xl text-purple-light">
-              ParentEmpower
+            <span className="font-display font-bold text-xl text-blue-light">
+              EduNova
             </span>
           </Link>
 
@@ -104,7 +104,7 @@ const Navbar = () => {
             </Button>
             <Button
               size="sm"
-              className="flex items-center space-x-1 bg-purple-light hover:bg-purple-light/90"
+              className="flex items-center space-x-1 bg-blue-light hover:bg-blue-light/90"
             >
               <User size={16} />
               <span>Inscription</span>
@@ -183,7 +183,7 @@ const Navbar = () => {
                   <span>Connexion</span>
                 </Button>
                 <Button
-                  className="w-full justify-start bg-purple-light hover:bg-purple-light/90"
+                  className="w-full justify-start bg-blue-light hover:bg-blue-light/90"
                   onClick={() => setIsOpen(false)}
                 >
                   <User size={16} className="mr-2" />

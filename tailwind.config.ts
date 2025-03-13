@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Nouvelle palette de couleurs pastel
+				// Palette de couleurs pastel avec bleu au lieu de violet
 				"blue-pastel": "#A7C7E7",
-				"blue-pastel-light": "#D3E4FD", // Nouvelle sous-teinte de bleu pastel
+				"blue-pastel-light": "#D3E4FD", 
 				"green-mint": "#B8E986",
 				"yellow-soft": "#FDE68A",
 				"gray-light": "#F5F5F5",
-				"purple-light": "#C3A2F1",
+				"blue-light": "#1E90FF", // Remplace "purple-light"
                 // New gray button colors
                 "button-gray": "#F1F1F1",
                 "button-gray-hover": "#E5E5E5",

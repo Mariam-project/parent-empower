@@ -15,7 +15,7 @@ const CalendarLegend = () => {
           <span>Cours</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="w-4 h-4 rounded-full bg-purple-400 shadow-sm"></div>
+          <div className="w-4 h-4 rounded-full bg-blue-light shadow-sm"></div>
           <span>Révisions</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
