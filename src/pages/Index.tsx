@@ -68,7 +68,7 @@ const Index = () => {
               Une solution pour chacun
             </h2>
             <p className="text-muted-foreground animate-fade-up" style={{ animationDelay: "100ms" }}>
-              ParentEmpower s'adapte à tous les acteurs de l'éducation
+              EduNova s'adapte à tous les acteurs de l'éducation
             </p>
           </div>
           
@@ -155,7 +155,7 @@ const Index = () => {
                   <span>Statistiques d'apprentissage</span>
                 </li>
               </ul>
-              <Link to="/teacher-dashboard">
+              <Link to="/professor-dashboard">
                 <Button className="w-full">Espace professeur</Button>
               </Link>
             </GlassCard>
