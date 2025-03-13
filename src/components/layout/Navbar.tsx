@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book, UserCog } from "lucide-react";
+import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -90,16 +90,6 @@ const Navbar = () => {
               <Book size={18} />
               <span>Carnet</span>
             </Link>
-            <Link
-              to="/professor-dashboard"
-              className={cn(
-                "nav-link flex items-center space-x-1",
-                isActive("/professor-dashboard") && "active-nav-link"
-              )}
-            >
-              <UserCog size={18} />
-              <span>Espace professeur</span>
-            </Link>
           </div>
 
           {/* Call to Action Buttons */}
@@ -182,17 +172,6 @@ const Navbar = () => {
               >
                 <Book size={18} />
                 <span>Carnet</span>
-              </Link>
-              <Link
-                to="/professor-dashboard"
-                className={cn(
-                  "nav-link flex items-center space-x-2",
-                  isActive("/professor-dashboard") && "active-nav-link"
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                <UserCog size={18} />
-                <span>Espace professeur</span>
               </Link>
               <div className="pt-2 flex flex-col space-y-2">
                 <Button

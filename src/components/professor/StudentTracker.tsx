@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import GlassCard from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Table,
   TableBody,
@@ -23,16 +24,18 @@ import {
   Filter,
   User,
   Mail,
-  Phone,
   ExternalLink,
   MoreHorizontal,
   FileText,
   BarChart,
-  MessageSquare
+  MessageSquare,
+  PenLine,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 // Mock data for students
 const mockStudents = [
@@ -40,7 +43,6 @@ const mockStudents = [
     id: 1,
     name: "Emma Dupont",
     email: "emma.dupont@example.com",
-    phone: "06 12 34 56 78",
     avatar: "https://i.pravatar.cc/150?img=1",
     progress: 85,
     grade: "14.5/20",
@@ -52,7 +54,6 @@ const mockStudents = [
     id: 2,
     name: "Lucas Bernard",
     email: "lucas.bernard@example.com",
-    phone: "07 65 43 21 09",
     avatar: "https://i.pravatar.cc/150?img=2",
     progress: 62,
     grade: "11/20",
@@ -64,7 +65,6 @@ const mockStudents = [
     id: 3,
     name: "Chloé Martin",
     email: "chloe.martin@example.com",
-    phone: "06 98 76 54 32",
     avatar: "https://i.pravatar.cc/150?img=3",
     progress: 92,
     grade: "16/20",
@@ -76,7 +76,6 @@ const mockStudents = [
     id: 4,
     name: "Thomas Petit",
     email: "thomas.petit@example.com",
-    phone: "07 11 22 33 44",
     avatar: "https://i.pravatar.cc/150?img=4",
     progress: 78,
     grade: "13/20",
@@ -88,7 +87,6 @@ const mockStudents = [
     id: 5,
     name: "Léa Garnier",
     email: "lea.garnier@example.com",
-    phone: "06 44 55 66 77",
     avatar: "https://i.pravatar.cc/150?img=5",
     progress: 55,
     grade: "9.5/20",
@@ -100,7 +98,6 @@ const mockStudents = [
     id: 6,
     name: "Antoine Durand",
     email: "antoine.durand@example.com",
-    phone: "07 99 88 77 66",
     avatar: "https://i.pravatar.cc/150?img=6",
     progress: 88,
     grade: "15/20",
@@ -112,7 +109,6 @@ const mockStudents = [
     id: 7,
     name: "Manon Rousseau",
     email: "manon.rousseau@example.com",
-    phone: "06 22 33 44 55",
     avatar: "https://i.pravatar.cc/150?img=7",
     progress: 70,
     grade: "12/20",
@@ -124,7 +120,6 @@ const mockStudents = [
     id: 8,
     name: "Hugo Leroy",
     email: "hugo.leroy@example.com",
-    phone: "07 33 44 55 66",
     avatar: "https://i.pravatar.cc/150?img=8",
     progress: 60,
     grade: "10.5/20",
@@ -136,7 +131,6 @@ const mockStudents = [
     id: 9,
     name: "Camille David",
     email: "camille.david@example.com",
-    phone: "06 55 66 77 88",
     avatar: "https://i.pravatar.cc/150?img=9",
     progress: 95,
     grade: "17/20",
@@ -148,7 +142,6 @@ const mockStudents = [
     id: 10,
     name: "Valentin Moreau",
     email: "valentin.moreau@example.com",
-    phone: "07 77 88 99 00",
     avatar: "https://i.pravatar.cc/150?img=10",
     progress: 80,
     grade: "14/20",
@@ -163,6 +156,9 @@ const StudentTracker = () => {
   const [filterStatus, setFilterStatus] = useState("Tous");
   const [sortColumn, setSortColumn] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [newNote, setNewNote] = useState("");
+  const { toast } = useToast();
 
   const filteredStudents = mockStudents.filter((student) => {
     const searchRegex = new RegExp(searchTerm, "i");
@@ -205,6 +201,20 @@ const StudentTracker = () => {
   const getSortIcon = (column) => {
     if (column !== sortColumn) return null;
     return sortDirection === "asc" ? "▲" : "▼";
+  };
+
+  const handleAddNote = () => {
+    if (!newNote.trim() || !selectedStudent) return;
+    
+    // In a real app, this would send the note to an API
+    // For now, just show a success toast
+    toast({
+      title: "Note ajoutée",
+      description: `La note a été ajoutée au carnet de ${selectedStudent.name}.`,
+    });
+    
+    setNewNote("");
+    setSelectedStudent(null);
   };
 
   return (
@@ -274,9 +284,6 @@ const StudentTracker = () => {
               <TableHead onClick={() => handleSort("email")} className="cursor-pointer">
                 Email {getSortIcon("email")}
               </TableHead>
-              <TableHead onClick={() => handleSort("phone")} className="cursor-pointer">
-                Téléphone {getSortIcon("phone")}
-              </TableHead>
               <TableHead onClick={() => handleSort("progress")} className="text-right cursor-pointer">
                 Progression {getSortIcon("progress")}
               </TableHead>
@@ -309,7 +316,6 @@ const StudentTracker = () => {
                     {student.email}
                   </a>
                 </TableCell>
-                <TableCell>{student.phone}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex items-center justify-end space-x-2">
                     <Progress value={student.progress} className="w-[80px]" />
@@ -349,14 +355,10 @@ const StudentTracker = () => {
                         Envoyer un email
                       </DropdownMenuItem>
                       <DropdownMenuItem>
-                        <Phone className="h-3 w-3 mr-2" />
-                        Appeler
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
                         <FileText className="h-3 w-3 mr-2" />
                         Voir les devoirs
                       </DropdownMenuItem>
-                       <DropdownMenuItem>
+                      <DropdownMenuItem>
                         <BarChart className="h-3 w-3 mr-2" />
                         Statistiques
                       </DropdownMenuItem>
@@ -364,6 +366,38 @@ const StudentTracker = () => {
                         <MessageSquare className="h-3 w-3 mr-2" />
                         Envoyer un message
                       </DropdownMenuItem>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <DropdownMenuItem onSelect={(e) => {
+                            e.preventDefault();
+                            setSelectedStudent(student);
+                          }}>
+                            <PenLine className="h-3 w-3 mr-2" />
+                            Ajouter une note
+                          </DropdownMenuItem>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>Ajouter une note au carnet de {student.name}</DialogTitle>
+                          </DialogHeader>
+                          <div className="py-4">
+                            <p className="text-sm text-muted-foreground mb-2">Cette note sera ajoutée au carnet d'apprentissage de l'élève.</p>
+                            <Textarea 
+                              placeholder="Saisissez votre commentaire ici..."
+                              className="min-h-[150px]"
+                              value={newNote}
+                              onChange={(e) => setNewNote(e.target.value)}
+                            />
+                          </div>
+                          <DialogFooter>
+                            <Button variant="outline" onClick={() => {
+                              setNewNote("");
+                              setSelectedStudent(null);
+                            }}>Annuler</Button>
+                            <Button onClick={handleAddNote}>Enregistrer</Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
