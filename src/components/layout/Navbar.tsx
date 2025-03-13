@@ -48,7 +48,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Remove professor dashboard link */}
           <div className="hidden md:flex items-center space-x-1 animate-fade-in">
             <Link
               to="/"
@@ -125,7 +125,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Remove professor dashboard link */}
         {isOpen && (
           <div className="md:hidden mt-4 py-4 glass-effect rounded-lg animate-scale-in">
             <div className="flex flex-col space-y-3 px-4">

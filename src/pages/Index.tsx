@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -53,7 +52,6 @@ const Index = () => {
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Left Column: Hero Text */}
             <div className="text-center md:text-left">
               <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 animate-fade-up">
                 L'éducation réinventée pour le monde moderne
@@ -79,7 +77,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right Column: Hero Image */}
             <div className="relative animate-fade-in">
               <img
                 src="/hero-image.svg"
@@ -107,7 +104,6 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: Students */}
             <GlassCard
               className="flex flex-col justify-between animate-fade-up"
               style={{ animationDelay: "200ms" }}
@@ -147,7 +143,6 @@ const Index = () => {
               </Link>
             </GlassCard>
 
-            {/* Card 2: Parents */}
             <GlassCard
               className="animate-fade-up"
               style={{ animationDelay: "400ms" }}
@@ -185,7 +180,6 @@ const Index = () => {
               </Link>
             </GlassCard>
 
-            {/* Card 3: Teachers - Remove the Link to professor dashboard */}
             <GlassCard
               className="animate-fade-up"
               style={{ animationDelay: "600ms" }}
@@ -218,13 +212,14 @@ const Index = () => {
                   <span>Statistiques d'apprentissage</span>
                 </li>
               </ul>
-              <Button className="w-full">En savoir plus</Button>
+              <Link to="/professor-dashboard">
+                <Button className="w-full">Espace professeur</Button>
+              </Link>
             </GlassCard>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-16 md:py-24" ref={featuresRef}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
@@ -241,7 +236,6 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
             <GlassCard
               className="p-6 animate-fade-up"
               style={{ animationDelay: "200ms" }}
@@ -269,7 +263,6 @@ const Index = () => {
               </p>
             </GlassCard>
 
-            {/* Feature 2 */}
             <GlassCard
               className="p-6 animate-fade-up"
               style={{ animationDelay: "400ms" }}
@@ -297,7 +290,6 @@ const Index = () => {
               </p>
             </GlassCard>
 
-            {/* Feature 3 */}
             <GlassCard
               className="p-6 animate-fade-up"
               style={{ animationDelay: "600ms" }}
@@ -309,7 +301,7 @@ const Index = () => {
                   fill="currentColor"
                   className="w-6 h-6 text-blue-light-foreground"
                 >
-                  <path d="M6 13.5a3 3 0 11-6 0 3 3 0 016 0zm12 0a3 3 0 11-6 0 3 3 0 016 0zm4.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM7.5 6.75a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm9 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                  <path d="M6 13.5a3 3 0 11-6 0 3 3 0 016 0zm12 0a3 3 0 11-6 0 3 3 0 016 0zm4.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-13.5 3a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                   <path
                     fillRule="evenodd"
                     d="M0.375 2.25A0.75 0.75 0 011.125 1.5h21.75a0.75 0.75 0 010.75 0.75v19.5a0.75 0.75 0 01-0.75 0.75H1.125a0.75 0.75 0 01-0.75-0.75V2.25zM2.25 4.5v15h19.5V4.5H2.25z"
@@ -329,14 +321,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section
         className="py-16 md:py-24 bg-secondary"
         ref={ctaRef}
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Left Column: CTA Text */}
             <div className="text-center md:text-left">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 animate-fade-up">
                 Prêt à transformer votre façon d'apprendre ?
@@ -361,7 +351,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right Column: CTA Image (Optional) */}
             <div className="relative animate-fade-in hidden md:block">
               <img
                 src="/cta-image.svg"
