@@ -1,7 +1,8 @@
+
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GlassCard } from "@/components/ui/GlassCard";
+import GlassCard from "@/components/ui/GlassCard";
 import {
   User,
   HeartHandshake,
