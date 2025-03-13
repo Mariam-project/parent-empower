@@ -51,38 +51,27 @@ const Index = () => {
         ref={heroRef}
       >
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 animate-fade-up">
-                L'éducation réinventée pour le monde moderne
-              </h1>
-              <p
-                className="text-muted-foreground text-lg mb-8 animate-fade-up"
-                style={{ animationDelay: "100ms" }}
-              >
-                EduNova est la plateforme d'apprentissage en ligne qui vous
-                offre des cours interactifs, un suivi personnalisé et une
-                communauté engagée.
-              </p>
-              <div
-                className="space-x-4 animate-fade-up"
-                style={{ animationDelay: "200ms" }}
-              >
-                <Link to="/courses">
-                  <Button size="lg">Découvrir les cours</Button>
-                </Link>
-                <Button variant="outline" size="lg">
-                  En savoir plus
-                </Button>
-              </div>
-            </div>
-
-            <div className="relative animate-fade-in">
-              <img
-                src="/hero-image.svg"
-                alt="EduNova Hero Image"
-                className="w-full rounded-lg shadow-lg"
-              />
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 animate-fade-up">
+              Apprendre ensemble, réussir ensemble
+            </h1>
+            <p
+              className="text-muted-foreground text-lg mb-8 animate-fade-up"
+              style={{ animationDelay: "100ms" }}
+            >
+              Une plateforme éducative interactive et inclusive qui rapproche élèves, 
+              parents et enseignants pour une expérience d'apprentissage optimale.
+            </p>
+            <div
+              className="space-x-4 animate-fade-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              <Link to="/courses">
+                <Button size="lg">Commencer maintenant</Button>
+              </Link>
+              <Button variant="outline" size="lg">
+                Explorer les cours
+              </Button>
             </div>
           </div>
         </div>
@@ -249,7 +238,7 @@ const Index = () => {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM8.547 9.505a1.5 1.5 0 10-2.975-0.499 1.5 1.5 0 002.975 0.499zm8.25 0a1.5 1.5 0 10-2.975-0.499 1.5 1.5 0 002.975 0.499zm4.5 3.75a3 3 0 11-6 0 3 3 0 016 0zm-13.5 3a3 3 0 11-6 0 3 3 0 016 0z"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM8.547 9.505a1.5 1.5 0 10-2.975-0.499 1.5 1.5 0 002.975 0.499zm8.25 0a1.5 1.5 0 10-2.975-0.499 1.5 1.5 0 002.975 0.499zm4.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-13.5 3a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
                     clipRule="evenodd"
                   />
                 </svg>
