@@ -7,12 +7,21 @@ import {
   CheckCircle,
   BookOpen,
   Users,
-  FileText
+  FileText,
+  BarChart2,
+  Award,
+  BrainCircuit,
+  Bell,
+  MessageSquare,
+  Shield,
+  ArrowRight
 } from "lucide-react";
 
 const Index = () => {
   const heroRef = useRef(null);
   const solutionsRef = useRef(null);
+  const featuresRef = useRef(null);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,10 +40,14 @@ const Index = () => {
 
     if (heroRef.current) observer.observe(heroRef.current);
     if (solutionsRef.current) observer.observe(solutionsRef.current);
+    if (featuresRef.current) observer.observe(featuresRef.current);
+    if (ctaRef.current) observer.observe(ctaRef.current);
 
     return () => {
       if (heroRef.current) observer.unobserve(heroRef.current);
       if (solutionsRef.current) observer.unobserve(solutionsRef.current);
+      if (featuresRef.current) observer.unobserve(featuresRef.current);
+      if (ctaRef.current) observer.unobserve(ctaRef.current);
     };
   }, []);
 
@@ -70,7 +83,7 @@ const Index = () => {
             >
               <Link to="/courses">
                 <Button size="lg" className="bg-blue-pastel hover:bg-blue-pastel/90">
-                  Commencer maintenant <span className="ml-1">→</span>
+                  Commencer maintenant <ArrowRight className="h-5 w-5 ml-1" />
                 </Button>
               </Link>
               <Button variant="outline" size="lg">
@@ -204,6 +217,220 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Features Section - "Une plateforme complète pour tous" */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-background to-blue-light/10" ref={featuresRef}>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 animate-fade-up">
+              Une plateforme complète pour tous
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: "100ms" }}>
+              Découvrez les fonctionnalités qui transforment l'apprentissage en une expérience enrichissante
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 - Cours interactifs */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "200ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <BookOpen className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Cours interactifs</h3>
+              <p className="text-muted-foreground mb-4">
+                Accédez à des vidéos, quiz et fiches personnalisables pour un apprentissage engageant et efficace.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Vidéos explicatives</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Quiz interactifs</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Fiches de révision</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Feature 2 - Suivi des progrès */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "300ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <BarChart2 className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Suivi des progrès</h3>
+              <p className="text-muted-foreground mb-4">
+                Visualisez vos progrès avec un carnet numérique et des tableaux de bord intuitifs.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Tableaux de bord personnalisés</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Statistiques détaillées</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Objectifs personnels</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Feature 3 - Gamification */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "400ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <Award className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Gamification</h3>
+              <p className="text-muted-foreground mb-4">
+                Restez motivé avec un système de défis, badges et récompenses pour valoriser vos efforts.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Badges de progression</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Défis hebdomadaires</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Certification Parcoursup</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Feature 4 - Assistance IA */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "500ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <BrainCircuit className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Assistance IA</h3>
+              <p className="text-muted-foreground mb-4">
+                Créez des fiches personnalisées assistées par l'intelligence artificielle pour optimiser vos révisions.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Fiches personnalisées</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Suggestions intelligentes</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Adaptation au rythme d'apprentissage</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Feature 5 - Pour les parents */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "600ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <Bell className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Pour les parents</h3>
+              <p className="text-muted-foreground mb-4">
+                Suivez la progression de votre enfant et accédez à des ressources pour l'accompagner efficacement.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Tableau de bord simplifié</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Notifications positives</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Ressources pédagogiques</span>
+                </li>
+              </ul>
+            </GlassCard>
+
+            {/* Feature 6 - Communication */}
+            <GlassCard 
+              className="p-6 animate-fade-up"
+              style={{ animationDelay: "700ms" }}
+              variant="primary"
+            >
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <MessageSquare className="h-6 w-6 text-blue-pastel" />
+              </div>
+              <h3 className="text-xl font-display font-semibold mb-3">Communication</h3>
+              <p className="text-muted-foreground mb-4">
+                Facilitez les échanges entre élèves, parents et enseignants pour un suivi optimal.
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Messagerie intégrée</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Partage de ressources</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-blue-pastel mr-2 flex-shrink-0" />
+                  <span className="text-sm">Communication sécurisée</span>
+                </li>
+              </ul>
+            </GlassCard>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - "Prêt à transformer l'expérience éducative ?" */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-pastel/10 to-background" ref={ctaRef}>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 animate-fade-up">
+              Prêt à transformer l'expérience éducative ?
+            </h2>
+            <p className="text-muted-foreground mb-8 animate-fade-up" style={{ animationDelay: "100ms" }}>
+              Rejoignez notre plateforme et découvrez une nouvelle façon d'apprendre, d'enseigner et 
+              d'accompagner les lycéens vers la réussite.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up" style={{ animationDelay: "200ms" }}>
+              <Button size="lg" className="bg-blue-pastel hover:bg-blue-pastel/90">
+                Commencer gratuitement <ArrowRight className="ml-1 h-5 w-5" />
+              </Button>
+              <Button variant="outline" size="lg">
+                Nous contacter
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
     </div>
   );
 };
