@@ -61,11 +61,6 @@ const Index = () => {
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="mb-6 text-center">
-              <span className="bg-blue-pastel/30 text-blue-800 px-4 py-1.5 rounded-full text-sm inline-block">
-                Nouvelle plateforme éducative pour les lycées d'Île-de-France
-              </span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 animate-fade-up">
               <span className="text-black">Apprendre ensemble,</span>
               <br />
@@ -92,15 +87,24 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Region Ile-de-France Logo */}
+            {/* Logos section - Updated */}
             <div className="mt-12 flex justify-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-              <div className="flex items-center gap-3 bg-white/60 px-4 py-2 rounded-lg shadow-sm">
-                <span className="text-sm text-gray-600">En partenariat avec</span>
+              <div className="flex items-center gap-6 bg-white/60 px-6 py-3 rounded-lg shadow-sm">
                 <div className="flex items-center">
-                  <div className="w-6 h-6 bg-idf-red rounded-full mr-1"></div>
-                  <div className="w-6 h-6 bg-idf-blue rounded-full"></div>
+                  <img 
+                    src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                    alt="Région Île-de-France" 
+                    className="h-12"
+                  />
                 </div>
-                <span className="text-sm font-semibold">Région Île-de-France</span>
+                <div className="h-10 w-px bg-gray-200"></div>
+                <div className="flex items-center">
+                  <img 
+                    src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
+                    alt="CY École de Design" 
+                    className="h-10"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -451,15 +455,24 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Region Ile-de-France Logo */}
+            {/* Updated logos section */}
             <div className="mt-10 flex justify-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-              <div className="flex items-center gap-3 bg-white/60 px-4 py-2 rounded-lg shadow-sm">
-                <span className="text-sm text-gray-600">Avec le soutien de la</span>
+              <div className="flex items-center gap-6 bg-white/60 px-6 py-3 rounded-lg shadow-sm">
                 <div className="flex items-center">
-                  <div className="w-5 h-5 bg-idf-red rounded-full mr-1"></div>
-                  <div className="w-5 h-5 bg-idf-blue rounded-full"></div>
+                  <img 
+                    src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                    alt="Région Île-de-France" 
+                    className="h-10"
+                  />
                 </div>
-                <span className="text-sm font-semibold">Région Île-de-France</span>
+                <div className="h-8 w-px bg-gray-200"></div>
+                <div className="flex items-center">
+                  <img 
+                    src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
+                    alt="CY École de Design" 
+                    className="h-8"
+                  />
+                </div>
               </div>
             </div>
           </div>

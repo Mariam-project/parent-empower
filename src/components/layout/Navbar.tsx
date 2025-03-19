@@ -43,12 +43,23 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2 animate-fade-in"
           >
-            <span className="font-display font-bold text-xl text-green-accent">
+            <span className="font-display font-bold text-xl text-blue-accent">
               EduNova
             </span>
-            <div className="hidden md:flex items-center bg-white/60 px-2 py-0.5 rounded-full text-xs font-medium shadow-sm gap-1">
-              <MapPin className="h-3 w-3 text-idf-red" />
-              <span>Île-de-France</span>
+            <div className="hidden md:flex items-center gap-3 bg-white/60 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm">
+              <div className="flex items-center">
+                <img 
+                  src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                  alt="Région Île-de-France" 
+                  className="h-5 mr-1"
+                />
+                <span className="text-xs">|</span>
+                <img 
+                  src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
+                  alt="CY École de Design" 
+                  className="h-5 ml-1"
+                />
+              </div>
             </div>
           </Link>
 
@@ -108,7 +119,7 @@ const Navbar = () => {
             </Button>
             <Button
               size="sm"
-              className="flex items-center space-x-1 bg-green-mint text-black hover:bg-green-mint/90"
+              className="flex items-center space-x-1 bg-blue-pastel text-blue-800 hover:bg-blue-pastel/90"
             >
               <User size={16} />
               <span>Inscription</span>
@@ -133,9 +144,18 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden mt-4 py-4 glass-effect rounded-lg animate-scale-in">
             <div className="flex flex-col space-y-3 px-4">
-              <div className="flex items-center bg-white/60 px-2 py-0.5 rounded-full text-xs font-medium shadow-sm gap-1 self-start mb-2">
-                <MapPin className="h-3 w-3 text-idf-red" />
-                <span>Lycées d'Île-de-France</span>
+              <div className="flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm self-start mb-4">
+                <img 
+                  src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                  alt="Région Île-de-France" 
+                  className="h-4 mr-1"
+                />
+                <span className="text-xs">|</span>
+                <img 
+                  src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
+                  alt="CY École de Design" 
+                  className="h-4 ml-1"
+                />
               </div>
               <Link
                 to="/"
@@ -191,7 +211,7 @@ const Navbar = () => {
                   <span>Connexion</span>
                 </Button>
                 <Button
-                  className="w-full justify-start bg-green-mint text-black hover:bg-green-mint/90"
+                  className="w-full justify-start bg-blue-pastel text-blue-800 hover:bg-blue-pastel/90"
                   onClick={() => setIsOpen(false)}
                 >
                   <User size={16} className="mr-2" />
