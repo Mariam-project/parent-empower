@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book, MapPin } from "lucide-react";
+import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-        scrolled ? "glass-effect shadow-subtle py-3" : "bg-transparent"
+        scrolled ? "bg-white shadow-subtle py-3" : "bg-white/95"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -46,21 +46,6 @@ const Navbar = () => {
             <span className="font-display font-bold text-xl text-blue-accent">
               EduNova
             </span>
-            <div className="hidden md:flex items-center gap-3 bg-white/60 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm">
-              <div className="flex items-center">
-                <img 
-                  src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
-                  alt="Région Île-de-France" 
-                  className="h-5 mr-1"
-                />
-                <span className="text-xs">|</span>
-                <img 
-                  src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
-                  alt="CY École de Design" 
-                  className="h-5 ml-1"
-                />
-              </div>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -69,7 +54,7 @@ const Navbar = () => {
               to="/"
               className={cn(
                 "nav-link flex items-center space-x-1",
-                isActive("/") && "bg-green-mint/20 text-green-accent"
+                isActive("/") && "bg-blue-pastel text-blue-800 font-semibold"
               )}
             >
               <Home size={18} />
@@ -142,26 +127,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 py-4 glass-effect rounded-lg animate-scale-in">
+          <div className="md:hidden mt-4 py-4 bg-white rounded-lg shadow-lg animate-scale-in">
             <div className="flex flex-col space-y-3 px-4">
-              <div className="flex items-center gap-2 bg-white/60 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm self-start mb-4">
-                <img 
-                  src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
-                  alt="Région Île-de-France" 
-                  className="h-4 mr-1"
-                />
-                <span className="text-xs">|</span>
-                <img 
-                  src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
-                  alt="CY École de Design" 
-                  className="h-4 ml-1"
-                />
-              </div>
               <Link
                 to="/"
                 className={cn(
                   "nav-link flex items-center space-x-2",
-                  isActive("/") && "bg-green-mint/20 text-green-accent"
+                  isActive("/") && "bg-blue-pastel text-blue-800 font-semibold"
                 )}
                 onClick={() => setIsOpen(false)}
               >

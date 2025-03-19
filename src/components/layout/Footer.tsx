@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -160,8 +161,29 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Logos section before Copyright */}
+        <div className="mt-8 flex justify-center mb-6">
+          <div className="flex items-center gap-6 bg-white shadow-sm px-6 py-3 rounded-lg">
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                alt="Région Île-de-France" 
+                className="h-10"
+              />
+            </div>
+            <div className="h-8 w-px bg-gray-200"></div>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
+                alt="CY École de Design" 
+                className="h-8"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Copyright & Legal Links */}
-        <div className="mt-8 pt-8 text-center">
+        <div className="text-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} EduNova. Tous droits réservés.
           </p>

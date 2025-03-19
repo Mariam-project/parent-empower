@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,11 +85,11 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-glass;
+    @apply bg-white/90 dark:bg-gray-900/80 border border-white/20 dark:border-white/10 shadow-sm;
   }
   
   .glass-card {
-    @apply glass-effect rounded-xl transition-all duration-300 hover:shadow-glass-hover;
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-md;
   }
   
   .hover-scale {
@@ -100,15 +101,15 @@
   }
   
   .active-nav-link {
-    @apply bg-blue-pastel/20 text-blue-pastel dark:bg-blue-pastel/20 dark:text-blue-pastel;
+    @apply bg-blue-pastel text-blue-800 dark:bg-blue-pastel dark:text-blue-800 font-semibold;
   }
   
   .button-primary {
-    @apply glass-effect bg-blue-pastel text-gray-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-blue-pastel text-blue-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
   }
   
   .button-secondary {
-    @apply glass-effect bg-green-mint text-gray-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-blue-pastel-light text-blue-800 px-5 py-2.5 rounded-lg shadow-button transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0;
   }
   
   .button-ghost {

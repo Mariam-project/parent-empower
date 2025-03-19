@@ -19,16 +19,16 @@ const GlassCard = ({
   return (
     <div
       className={cn(
-        "glass-card p-6",
+        "bg-white rounded-xl shadow-sm border p-6",
         hoverEffect && "hover-scale",
-        variant === "primary" && "border-blue-pastel/30 bg-blue-pastel/10", // Changed from green-mint to blue-pastel
-        variant === "secondary" && "border-blue-pastel-light/30 bg-blue-pastel-light/10",
-        variant === "accent" && "border-blue-light/30 bg-blue-light/10",
-        variant === "green" && "border-green-mint/30 bg-green-mint/10",
-        variant === "yellow" && "border-yellow-soft/30 bg-yellow-soft/10",
-        variant === "orange" && "border-orange-soft/30 bg-orange-soft/10",
-        variant === "rose" && "border-rose-soft/30 bg-rose-soft/10",
-        variant === "neutral" && "border-white/10 bg-white/70",
+        variant === "primary" && "border-blue-pastel text-blue-800", 
+        variant === "secondary" && "border-blue-pastel-light text-blue-800",
+        variant === "accent" && "border-blue-light text-blue-800",
+        variant === "green" && "border-green-mint text-green-accent",
+        variant === "yellow" && "border-yellow-soft text-yellow-soft/90",
+        variant === "orange" && "border-orange-soft text-orange-soft",
+        variant === "rose" && "border-rose-soft text-rose-soft",
+        variant === "neutral" && "border-gray-200",
         className
       )}
       {...props}
