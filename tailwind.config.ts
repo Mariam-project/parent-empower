@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,17 +62,23 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Palette de couleurs pastel avec bleu au lieu de violet
+				// Updated color palette with more diversity and less blue dominance
 				"blue-pastel": "#A7C7E7",
 				"blue-pastel-light": "#D3E4FD", 
 				"green-mint": "#B8E986",
+				"green-accent": "#5CCB90",
 				"yellow-soft": "#FDE68A",
+				"orange-soft": "#FEC6A1",
+				"rose-soft": "#FFDEE2",
 				"gray-light": "#F5F5F5",
-				"blue-light": "#1E90FF", // Remplace "purple-light"
+				"blue-light": "#1E90FF",
                 // New gray button colors
                 "button-gray": "#F1F1F1",
                 "button-gray-hover": "#E5E5E5",
                 "button-gray-border": "#DEDEDE",
+				// Region Ile-de-France colors
+				"idf-red": "#FF0000",
+				"idf-blue": "#000091",
 			},
 			fontFamily: {
 				sans: ['Inter var', 'sans-serif'],

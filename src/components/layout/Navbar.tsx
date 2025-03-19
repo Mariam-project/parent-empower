@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book } from "lucide-react";
+import { Menu, X, User, LogIn, BookOpen, Home, BarChart3, Book, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
@@ -43,18 +43,22 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2 animate-fade-in"
           >
-            <span className="font-display font-bold text-xl text-blue-light">
+            <span className="font-display font-bold text-xl text-green-accent">
               EduNova
             </span>
+            <div className="hidden md:flex items-center bg-white/60 px-2 py-0.5 rounded-full text-xs font-medium shadow-sm gap-1">
+              <MapPin className="h-3 w-3 text-idf-red" />
+              <span>Île-de-France</span>
+            </div>
           </Link>
 
-          {/* Desktop Navigation - Remove professor dashboard link */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 animate-fade-in">
             <Link
               to="/"
               className={cn(
                 "nav-link flex items-center space-x-1",
-                isActive("/") && "active-nav-link"
+                isActive("/") && "bg-green-mint/20 text-green-accent"
               )}
             >
               <Home size={18} />
@@ -64,7 +68,7 @@ const Navbar = () => {
               to="/dashboard"
               className={cn(
                 "nav-link flex items-center space-x-1",
-                isActive("/dashboard") && "active-nav-link"
+                isActive("/dashboard") && "bg-yellow-soft/20 text-yellow-soft"
               )}
             >
               <BarChart3 size={18} />
@@ -74,7 +78,7 @@ const Navbar = () => {
               to="/courses"
               className={cn(
                 "nav-link flex items-center space-x-1",
-                isActive("/courses") && "active-nav-link"
+                isActive("/courses") && "bg-orange-soft/20 text-orange-soft"
               )}
             >
               <BookOpen size={18} />
@@ -84,7 +88,7 @@ const Navbar = () => {
               to="/journal"
               className={cn(
                 "nav-link flex items-center space-x-1",
-                isActive("/journal") && "active-nav-link"
+                isActive("/journal") && "bg-rose-soft/20 text-rose-soft"
               )}
             >
               <Book size={18} />
@@ -104,7 +108,7 @@ const Navbar = () => {
             </Button>
             <Button
               size="sm"
-              className="flex items-center space-x-1 bg-blue-light hover:bg-blue-light/90"
+              className="flex items-center space-x-1 bg-green-mint text-black hover:bg-green-mint/90"
             >
               <User size={16} />
               <span>Inscription</span>
@@ -125,15 +129,19 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu - Remove professor dashboard link */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-4 py-4 glass-effect rounded-lg animate-scale-in">
             <div className="flex flex-col space-y-3 px-4">
+              <div className="flex items-center bg-white/60 px-2 py-0.5 rounded-full text-xs font-medium shadow-sm gap-1 self-start mb-2">
+                <MapPin className="h-3 w-3 text-idf-red" />
+                <span>Lycées d'Île-de-France</span>
+              </div>
               <Link
                 to="/"
                 className={cn(
                   "nav-link flex items-center space-x-2",
-                  isActive("/") && "active-nav-link"
+                  isActive("/") && "bg-green-mint/20 text-green-accent"
                 )}
                 onClick={() => setIsOpen(false)}
               >
@@ -144,7 +152,7 @@ const Navbar = () => {
                 to="/dashboard"
                 className={cn(
                   "nav-link flex items-center space-x-2",
-                  isActive("/dashboard") && "active-nav-link"
+                  isActive("/dashboard") && "bg-yellow-soft/20 text-yellow-soft"
                 )}
                 onClick={() => setIsOpen(false)}
               >
@@ -155,7 +163,7 @@ const Navbar = () => {
                 to="/courses"
                 className={cn(
                   "nav-link flex items-center space-x-2",
-                  isActive("/courses") && "active-nav-link"
+                  isActive("/courses") && "bg-orange-soft/20 text-orange-soft"
                 )}
                 onClick={() => setIsOpen(false)}
               >
@@ -166,7 +174,7 @@ const Navbar = () => {
                 to="/journal"
                 className={cn(
                   "nav-link flex items-center space-x-2",
-                  isActive("/journal") && "active-nav-link"
+                  isActive("/journal") && "bg-rose-soft/20 text-rose-soft"
                 )}
                 onClick={() => setIsOpen(false)}
               >
@@ -183,7 +191,7 @@ const Navbar = () => {
                   <span>Connexion</span>
                 </Button>
                 <Button
-                  className="w-full justify-start bg-blue-light hover:bg-blue-light/90"
+                  className="w-full justify-start bg-green-mint text-black hover:bg-green-mint/90"
                   onClick={() => setIsOpen(false)}
                 >
                   <User size={16} className="mr-2" />
