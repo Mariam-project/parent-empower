@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11.2%;
 
-    --primary: 152 76% 80%; /* #B8E986 - Green mint */
+    --primary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair - changed from green mint */
     --primary-foreground: 222 47% 11.2%;
 
     --secondary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair */
@@ -22,7 +22,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 145 43% 58%; /* #5CCB90 - Green accent */
+    --accent: 210 100% 64%; /* #3B82F6 - Blue accent - changed from green accent */
     --accent-foreground: 222 47% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,7 +30,7 @@
 
     --border: 0 0% 90%; /* Changed from yellow to a subtle gray */
     --input: 214.3 31.8% 91.4%;
-    --ring: 152 76% 80%; /* Green mint ring */
+    --ring: 219 90% 91%; /* Blue ring - changed from green mint */
 
     --radius: 0.75rem;
   }
@@ -45,7 +45,7 @@
     --popover: 222 47% 11.2%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 152 76% 80%; /* #B8E986 - Green mint */
+    --primary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair - changed from green mint */
     --primary-foreground: 222 47% 11.2%;
 
     --secondary: 219 90% 91%; /* #D3E4FD - Bleu pastel clair */
@@ -54,7 +54,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 145 43% 58%; /* #5CCB90 - Green accent */
+    --accent: 210 100% 64%; /* #3B82F6 - Blue accent - changed from green accent */
     --accent-foreground: 222 47% 11.2%;
 
     --destructive: 0 62.8% 30.6%;
@@ -62,7 +62,7 @@
 
     --border: 0 0% 20%; /* Changed from yellow to a subtle dark gray for dark mode */
     --input: 217.2 32.6% 17.5%;
-    --ring: 152 76% 80%; /* Green mint ring */
+    --ring: 219 90% 91%; /* Blue ring - changed from green mint */
   }
 }
 
