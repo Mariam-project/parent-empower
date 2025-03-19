@@ -56,20 +56,20 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
-        className="relative py-24 md:py-32 bg-gradient-to-br from-green-mint/40 to-background"
+        className="relative py-24 md:py-32 bg-gradient-to-br from-blue-pastel/40 to-background"
         ref={heroRef}
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
             <div className="mb-6 text-center">
-              <span className="bg-green-mint/30 text-green-accent px-4 py-1.5 rounded-full text-sm inline-block">
+              <span className="bg-blue-pastel/30 text-blue-800 px-4 py-1.5 rounded-full text-sm inline-block">
                 Nouvelle plateforme éducative pour les lycées d'Île-de-France
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 animate-fade-up">
               <span className="text-black">Apprendre ensemble,</span>
               <br />
-              <span className="text-green-accent">réussir ensemble</span>
+              <span className="text-blue-500">réussir ensemble</span>
             </h1>
             <p
               className="text-muted-foreground text-lg mb-8 animate-fade-up"
@@ -83,7 +83,7 @@ const Index = () => {
               style={{ animationDelay: "200ms" }}
             >
               <Link to="/courses">
-                <Button size="lg" className="bg-green-mint text-black hover:bg-green-mint/90">
+                <Button size="lg" className="bg-blue-pastel text-blue-800 hover:bg-blue-pastel/90">
                   Commencer maintenant <ArrowRight className="h-5 w-5 ml-1" />
                 </Button>
               </Link>
@@ -128,32 +128,32 @@ const Index = () => {
               style={{ animationDelay: "200ms" }}
               variant="primary"
             >
-              <div className="h-14 w-14 rounded-full bg-green-mint/20 flex items-center justify-center mb-6">
-                <BookOpen className="h-7 w-7 text-green-accent" />
+              <div className="h-14 w-14 rounded-full bg-blue-pastel/20 flex items-center justify-center mb-6">
+                <BookOpen className="h-7 w-7 text-blue-500" />
               </div>
               <h3 className="text-xl font-display font-semibold mb-5">
                 Pour les élèves
               </h3>
               <ul className="space-y-3 mb-8 text-left w-full">
                 <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
                   <span>Cours interactifs engageants</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
                   <span>Système de gamification motivant</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
                   <span>Fiches personnalisées par IA</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 text-blue-500 mr-2 flex-shrink-0" />
                   <span>Certification pour Parcoursup</span>
                 </li>
               </ul>
               <Link to="/dashboard" className="mt-auto w-full">
-                <Button className="w-full bg-green-mint/30 text-green-accent hover:bg-green-mint/40">
+                <Button className="w-full bg-blue-pastel/30 text-blue-800 hover:bg-blue-pastel/40">
                   Espace élève
                 </Button>
               </Link>
@@ -235,7 +235,7 @@ const Index = () => {
       </section>
 
       {/* Features Section - "Une plateforme complète pour tous" */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-background to-green-mint/10" ref={featuresRef}>
+      <section className="py-16 md:py-24 bg-gradient-to-br from-background to-blue-pastel/10" ref={featuresRef}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 animate-fade-up">
@@ -254,8 +254,8 @@ const Index = () => {
               style={{ animationDelay: "200ms" }}
               variant="primary"
             >
-              <div className="mb-4 h-12 w-12 rounded-full bg-green-mint/20 flex items-center justify-center">
-                <BookOpen className="h-6 w-6 text-green-accent" />
+              <div className="mb-4 h-12 w-12 rounded-full bg-blue-pastel/20 flex items-center justify-center">
+                <BookOpen className="h-6 w-6 text-blue-500" />
               </div>
               <h3 className="text-xl font-display font-semibold mb-3">Cours interactifs</h3>
               <p className="text-muted-foreground mb-4">
@@ -263,15 +263,15 @@ const Index = () => {
               </p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0" />
                   <span className="text-sm">Vidéos explicatives</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0" />
                   <span className="text-sm">Quiz interactifs</span>
                 </li>
                 <li className="flex items-center">
-                  <CheckCircle className="h-4 w-4 text-green-accent mr-2 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0" />
                   <span className="text-sm">Fiches de révision</span>
                 </li>
               </ul>
@@ -426,7 +426,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section - "Prêt à transformer l'expérience éducative ?" */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-green-mint/10 to-background" ref={ctaRef}>
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-pastel/10 to-background" ref={ctaRef}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
             <div className="flex justify-center mb-6 animate-fade-up">
@@ -443,7 +443,7 @@ const Index = () => {
               d'accompagner les lycéens d'Île-de-France vers la réussite.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up" style={{ animationDelay: "200ms" }}>
-              <Button size="lg" className="bg-green-mint text-black hover:bg-green-mint/90">
+              <Button size="lg" className="bg-blue-pastel text-blue-800 hover:bg-blue-pastel/90">
                 Commencer gratuitement <ArrowRight className="ml-1 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg">
