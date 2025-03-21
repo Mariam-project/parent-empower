@@ -161,14 +161,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Logos section before Copyright */}
+        {/* Logos section before Copyright - Updated with new Île-de-France logo */}
         <div className="mt-8 flex justify-center mb-6">
           <div className="flex items-center gap-6 bg-white shadow-sm px-6 py-3 rounded-lg">
             <div className="flex items-center">
               <img 
-                src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
+                src="/lovable-uploads/region-idf-logo.png" 
                 alt="Région Île-de-France" 
-                className="h-10"
+                className="h-12"
               />
             </div>
             <div className="h-8 w-px bg-gray-200"></div>

@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -87,26 +86,7 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Logos section - Updated */}
-            <div className="mt-12 flex justify-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-              <div className="flex items-center gap-6 bg-white/60 px-6 py-3 rounded-lg shadow-sm">
-                <div className="flex items-center">
-                  <img 
-                    src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
-                    alt="Région Île-de-France" 
-                    className="h-12"
-                  />
-                </div>
-                <div className="h-10 w-px bg-gray-200"></div>
-                <div className="flex items-center">
-                  <img 
-                    src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
-                    alt="CY École de Design" 
-                    className="h-10"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Removed first logos section */}
           </div>
         </div>
       </section>
@@ -455,26 +435,7 @@ const Index = () => {
               </Button>
             </div>
             
-            {/* Updated logos section */}
-            <div className="mt-10 flex justify-center animate-fade-up" style={{ animationDelay: "300ms" }}>
-              <div className="flex items-center gap-6 bg-white/60 px-6 py-3 rounded-lg shadow-sm">
-                <div className="flex items-center">
-                  <img 
-                    src="/lovable-uploads/6aa9fd0c-a5ac-4aa5-97de-296e78cb61d6.png" 
-                    alt="Région Île-de-France" 
-                    className="h-10"
-                  />
-                </div>
-                <div className="h-8 w-px bg-gray-200"></div>
-                <div className="flex items-center">
-                  <img 
-                    src="/lovable-uploads/eccb1831-d7b1-4430-a4d3-acc282e1b3ec.png" 
-                    alt="CY École de Design" 
-                    className="h-8"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Removed second logos section */}
           </div>
         </div>
       </section>
